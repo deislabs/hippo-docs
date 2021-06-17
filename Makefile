@@ -6,8 +6,6 @@ HUGO_IMG=klakegg/hugo:${HUGO_VERSION}-ext-alpine
 HUGO_CONTAINER=hippo-docs
 
 build:
-	@# The resources generated between preview and build are different, only commit what comes out of build
-	-rm -fr resources
 	docker run --rm \
 		-v `pwd`:/src --entrypoint make ${HUGO_IMG} deploy
 
