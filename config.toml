@@ -1,4 +1,4 @@
-baseURL = "https://docs.deislabs.io/hippo"
+baseURL = "https://docs.deislabs.io/hippo/"
 languageCode = "en-us"
 title = "Hippo"
 theme = "krustlet"
@@ -55,12 +55,12 @@ theme = "krustlet"
 [[menu.main]]
 	name = "Docs"
 	weight = 20
-	url = "https://docs.deislabs.io/"
+	url = "/"
 
 # Uncomment to add your release versions here
 #[[params.versions]]
 #  version = "v0.1.0"
-#  url = "https://docs.deislabs.io/hippo/"
+#  url = "/hippo/"
 
 
 # Theme Additional params
@@ -76,10 +76,10 @@ theme = "krustlet"
   breadcrumb_disable = false
   sidebar_search_disable = false
   parent = "Deis Labs"
-  parent_url = "https://docs.deislabs.io/"
+  parent_url = "/"
   footer_logo = true
   footer_logo_img = "logos/deislabs.png"
-  footer_url = "https://docs.deislabs.io/hippo/"
+  footer_url = "/hippo/"
   ul_show = 0
 
 [params.ui.feedback]
