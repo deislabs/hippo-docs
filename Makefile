@@ -18,4 +18,4 @@ preview:
 	
 	# Wait for the documentation web server to finish rendering
 	@until docker logs ${HUGO_CONTAINER} | grep -m 1  "Web Server is available"; do : ; done
-	@open "http://localhost:1313/webassembly/"
+	@open "http://localhost:1313/hippo/"

@@ -1,6 +1,6 @@
-# Web Assembly Website
+# Hippo Website
 
-This repository generates the website at https://docs.deislabs.io/webassembly/.
+This repository generates the website at https://docs.deislabs.io/hippo/.
 
 # Preview the Site
 

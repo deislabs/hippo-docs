@@ -1,13 +1,13 @@
-baseURL = "https://docs.deislabs.io/webassembly"
+baseURL = "https://docs.deislabs.io/hippo"
 languageCode = "en-us"
-title = "Web Assembly"
+title = "Hippo"
 theme = "krustlet"
 
 # Theme General Config
 [languages]
   [languages.en]
-    title = "Web Assembly"
-    description = "Web Assembly @ Deislabs"
+    title = "Hippo"
+    description = "Hippo Documentation"
     languageName ="English"
     weight = 1
     navbar_logo = false
@@ -60,7 +60,7 @@ theme = "krustlet"
 # Uncomment to add your release versions here
 #[[params.versions]]
 #  version = "v0.1.0"
-#  url = "https://docs.deislabs.io/webassembly/"
+#  url = "https://docs.deislabs.io/hippo/"
 
 
 # Theme Additional params
@@ -79,7 +79,7 @@ theme = "krustlet"
   parent_url = "https://docs.deislabs.io/"
   footer_logo = true
   footer_logo_img = "logos/deislabs.png"
-  footer_url = "https://docs.deislabs.io/webassembly/"
+  footer_url = "https://docs.deislabs.io/hippo/"
   ul_show = 0
 
 [params.ui.feedback]
