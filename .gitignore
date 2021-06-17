@@ -1,2 +1,6 @@
+/node_modules/
 /public/
 
+!/node_modules/bootstrap
+!/node_modules/@fortawesome
+!/node_modules/.yarn-integrity

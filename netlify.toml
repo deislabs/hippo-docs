@@ -1,0 +1,14 @@
+[settings]
+  ID = "hippo-docs"
+
+[build]
+  base = "/"
+  publish = "public"
+  command = "make deploy"
+
+[build.environment]
+  HUGO_VERSION = "0.79.0"
+  HUGO_ENABLEGITINFO = "true"
+
+[context.production.environment]
+  HUGO_ENV = "production"
