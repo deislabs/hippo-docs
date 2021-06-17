@@ -1,0 +1,9 @@
+name: trigger-build
+on: push
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Trigger Build
+        run: "curl -X POST -d {} ${{ secrets.BUILD_HOOK }}"
