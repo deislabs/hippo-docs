@@ -1,0 +1,86 @@
+baseURL = "https://docs.deislabs.io/webassembly"
+languageCode = "en-us"
+title = "Web Assembly"
+theme = "krustlet"
+
+# Theme General Config
+[languages]
+  [languages.en]
+    title = "Web Assembly"
+    description = "Web Assembly @ Deislabs"
+    languageName ="English"
+    weight = 1
+    navbar_logo = false
+
+[services]
+  [services.googleAnalytics]
+    id = "TODO"
+    enableRobotsTXT = true
+    enableGitInfo = true
+    contentDir = "content"
+    version_menu = "Releases"
+    defaultContentLanguage = "en"
+    defaultContentLanguageInSubdir = false
+    enableMissingTranslationPlaceholders = true
+    disableKinds = ["taxonomy", "taxonomyTerm"]
+    pygmentsCodeFences = true
+    pygmentsUseClasses = false
+    pygmentsUseClassic = false
+    pygmentsStyle = "tango"
+
+  [imaging]
+    resampleFilter = "CatmullRom"
+    quality = 75
+    anchor = "smart"
+
+  [blackfriday]
+    plainIDAnchors = true
+    hrefTargetBlank = true
+    angledQuotes = false
+    latexDashes = true
+
+  [markup]
+    [markup.goldmark]
+      [markup.goldmark.renderer]
+        unsafe = true
+    [markup.highlight]
+      style = "tomorrow-night"
+
+
+# OSM top menu (should match main site)
+[[menu.main]]
+	name = "Home"
+	weight = 10
+	url = "https://deislabs.io/"
+[[menu.main]]
+	name = "Docs"
+	weight = 20
+	url = "https://docs.deislabs.io/"
+
+# Uncomment to add your release versions here
+#[[params.versions]]
+#  version = "v0.1.0"
+#  url = "https://docs.deislabs.io/webassembly/"
+
+
+# Theme Additional params
+[params]
+  copyright = "The Docsy Authors"
+  offlineSearch = true
+  prism_syntax_highlighting = true
+
+[params.ui]
+  navbar_logo = true
+  navbar_logo_img = "logos/full.png"
+  sidebar_menu_compact = false
+  breadcrumb_disable = false
+  sidebar_search_disable = false
+  parent = "Deis Labs"
+  parent_url = "https://docs.deislabs.io/"
+  footer_logo = true
+  footer_logo_img = "logos/deislabs.png"
+  footer_url = "https://docs.deislabs.io/webassembly/"
+  ul_show = 0
+
+[params.ui.feedback]
+  enable = false
