@@ -11,7 +11,7 @@ build:
 
 preview:
 	@# Remove other hugo containers that would conflict
-	-docker rm -f `docker ps --filter publish=${PORT} -aq`
+	-docker rm -f `docker ps --filter publish=${PORT} -aq` ${HUGO_CONTAINER}
 	docker run --name ${HUGO_CONTAINER} \
 		-d -v `pwd`:/src -p ${PORT}:1313 ${HUGO_IMG} \
 		server --debug --verbose -b ${BASE_URL}/ --buildDrafts --buildFuture --watch --bind=0.0.0.0
