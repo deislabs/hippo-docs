@@ -384,7 +384,6 @@ main > .td-content {
 
   h3 {
     font-family: $displaytype;
-    @include uppercase;
     margin-top: 4rem !important;
     margin-bottom: 3rem;
   }
@@ -487,4 +486,9 @@ main > .td-content {
       font-size: 1.25rem;
     }
   }
+}
+
+.twitter-tweet {
+  margin-left: auto;
+  margin-right: auto;
 }
