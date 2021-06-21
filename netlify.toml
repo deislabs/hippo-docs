@@ -4,7 +4,8 @@
 [build]
   base = "/"
   publish = "public"
-  command = "BASE_URL=$DEPLOY_PRIME_URL make deploy"
+  # Set BASE_URL to the production URL, or use $URL for the netlify staging site
+  command = "BASE_URL=$URL make deploy"
 
 [build.environment]
   HUGO_VERSION = "0.79.0"
@@ -12,3 +13,9 @@
 
 [context.production.environment]
   HUGO_ENV = "production"
+
+[context.deploy-preview]
+  command = "BASE_URL=$PRIME_DEPLOY_URL make deploy"
+
+[context.branch-deploy]
+  command = "BASE_URL=$PRIME_DEPLOY_URL make deploy"
