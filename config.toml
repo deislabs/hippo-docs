@@ -78,7 +78,7 @@ theme = "deislabs"
   parent = "Deis Labs"
   parent_url = "/"
   footer_logo = true
-  footer_logo_img = "logos/deislabs.png"
+  footer_logo_img = "logo-with-text.png"
   footer_url = "/hippo/"
   ul_show = 0
 

@@ -9,7 +9,9 @@ Here at Deis Labs we are cooking up a better ways to develop and run WebAssembly
 **Hippo** streamlines deploying and serving WebAssembly so that you can focus on your app.
 You can package your Web Assembly module with any supporting files, such as static HTML files and images, and then deploy your application to a server optimized for WebAssembly services.
 
-> Lookout, hungry hungry hippos 🦛 are serving up your web assembly modules. Omnomnom, yum!
+
+> Lookout, hungry hungry hippos are serving up your web assembly. Omnomnom, yum! <img src="/images/hippo.png" width="64px" />
+
 
 Our goal is a Platform as a Service (PaaS) that makes it easier for a developer to create a WebAssembly module and quickly get it up and running, without having to dive into the complexities of hosting.
 
