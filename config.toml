@@ -1,7 +1,7 @@
 baseURL = "https://docs.deislabs.io/hippo/"
 languageCode = "en-us"
 title = "Hippo"
-theme = "krustlet"
+theme = "deislabs"
 
 # Theme General Config
 [languages]
