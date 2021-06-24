@@ -9,8 +9,11 @@
         font-weight: $font-weight-body-text;
     }
 
-    > h1 {
+    > h1, > h2, > h3, > h4, > h5, > h6 {
         font-weight: $font-weight-bold;
+    }
+
+    > h1 {
         margin-bottom: 1rem;
     }
 

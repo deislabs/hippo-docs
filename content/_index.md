@@ -20,20 +20,22 @@ Our goal is a Platform as a Service (PaaS) that makes it easier for a developer 
 ### <i class="fas fa-file-code"></i> Author
 
 Scaffold a WebAssembly module using [Yeoman] for AssemblyScript, C, Rust, or Swift.
-Develop your application with familiar languages and proven tools and then compile to webAssembly.
+Develop your application with familiar languages and proven tools, and then compile to WebAssembly.
 
 [Yeoman]: https://yeoman.io/
 
 ### <i class="fas fa-rocket"></i> Push
 
-Publish a new version of your application when you push to GitHub.
+Package your module and any supporting files into a **bindle** and then push it to a **bindle hub**.
 
-### <i class="fas fa-rocket"></i> Register
+### <i class="fas fa-user-plus"></i> Register
 
-Register your application with Hippo, where it can either deploy a specific version or always deploy the latest within a version range.
+Register your application with a **Hippo** server, defining a deployment **channel** which specifies whether an exact version should be deployed, or the latest version from a version range.
 
 ### <i class="fas fa-play"></i> Serve
 
-Hippo keeps an eye out for new versions of your application, which it then serves, load balances, and provisions https certificates for you.
+Hippo keeps an eye out for new versions of your application by querying a bindle server.
+New versions that match your channel settings are automatically deployed.
+Hippo serves the assets in your application's bindle, load balances the application, and provisions https certificates for you.
 
 [wasm]: webassembly/
