@@ -15,21 +15,25 @@ You can package your Web Assembly module with any supporting files, such as stat
 
 Our goal is a Platform as a Service (PaaS) that makes it easier for a developer to create a WebAssembly module and quickly get it up and running, without having to dive into the complexities of hosting.
 
-## <i class="fas fa-file-code"></i> Author
+![drawing of Hippo architecture](/images/hippo-architecture.png)
+
+### <i class="fas fa-file-code"></i> Author
 
 Scaffold a WebAssembly module using [Yeoman] for AssemblyScript, C, Rust, or Swift.
-Develop your application with familiar languages and proven tools.
+Develop your application with familiar languages and proven tools and then compile to webAssembly.
 
 [Yeoman]: https://yeoman.io/
 
-## <i class="fas fa-rocket"></i> Push
+### <i class="fas fa-rocket"></i> Push
 
 Publish a new version of your application when you push to GitHub.
 
-## <i class="fas fa-play"></i> Serve
+### <i class="fas fa-rocket"></i> Register
 
-Register your application with Hippo, where it will handle serving, load balancing, and provisioning https certificates for you.
-New versions of your application are automatically deployed so you can focus on your app, not the infrastructure.
+Register your application with Hippo, where it can either deploy a specific version or always deploy the latest within a version range.
 
+### <i class="fas fa-play"></i> Serve
+
+Hippo keeps an eye out for new versions of your application, which it then serves, load balances, and provisions https certificates for you.
 
 [wasm]: webassembly/
