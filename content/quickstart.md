@@ -33,7 +33,7 @@ For this quickstart, the main concepts that you will use include:
 
 * [WebAssembly]
 
-    A binary containing your application which has been compiled to a byte code understood by WebAssembly runtimes. Normally your application may be compiled so that it runs natively on an operating system and architecture, such as linux/amd64. Applications must be compiled for wasm+WASI in order to be runnable by Hippo.
+    A binary containing your application which has been compiled to byte code understood by WebAssembly runtimes. Normally your application may be compiled so that it runs natively on an operating system and architecture, such as linux/amd64. Applications must be compiled for wasm+WASI in order to be runnable by Hippo.
 
     Not familiar with WebAssembly? Take a quick tour of [WebAssembly in a Hurry][WebAssembly] to get up to speed.
 * [Bindle]
