@@ -6,6 +6,7 @@ weight: 1
 ---
 
 For this quickstart, you will locally run the components of Hippo, create a hello world application, and then run it on Hippo.
+While you would not normally run local Hippo or Bindle services, this allows you to understand Hippo's architecture and try it out before public services are available.
 
 ## Prerequisites
 
@@ -13,9 +14,10 @@ For this quickstart, you will locally run the components of Hippo, create a hell
 * [WASI compatible] programming language installed, either AssemblyScript, C, Rust, or Swift.
 * [PowerShell] v6+, if using Windows.
 * [Git] installed. This is a temporary development dependency until [Hippo] and [WAGI] are publishing releases.
-* [Make] installed. This is a temporary development dependency until WAGI is publishing releases.
 * [.NET 5]. This is temporary development dependency until Hippo is publishing releases.
 * [Rust]. This is a temporary development dependency until WAGI is publishing releases.
+* POSIX developer environment such as linux, macos or WSL, with developer tools such as make, bash, curl, etc installed. This is a temporary development dependency until WAGI is publishing releases.
+
 
 [Git]: https://git-scm.com/book/en/v2/Getting-Started-Installing-Git
 [Node.js]: https://nodejs.org/en/download/
@@ -29,9 +31,17 @@ For this quickstart, you will locally run the components of Hippo, create a hell
 
 For this quickstart, the main concepts that you will use include:
 
-* [WebAssembly]: A binary containing your application which has been compiled to a byte code understood by WebAssembly runtimes. Normally your application may be compiled so that it runs natively on an operating system and architecture, such as linux/amd64. Applications must be compiled for wasm+WASI in order to be runnable by Hippo.
-* [Bindle]: A versioned package containing your WebAssembly module and supporting files.
-* [Hippo]: The platform that serves WebAssembly modules.
+* [WebAssembly]
+
+    A binary containing your application which has been compiled to a byte code understood by WebAssembly runtimes. Normally your application may be compiled so that it runs natively on an operating system and architecture, such as linux/amd64. Applications must be compiled for wasm+WASI in order to be runnable by Hippo.
+
+    Not familiar with WebAssembly? Take a quick tour of [WebAssembly in a Hurry][WebAssembly] to get up to speed.
+* [Bindle]
+
+    A versioned package containing your WebAssembly module and supporting files.
+* [Hippo]
+
+    The platform that serves WebAssembly modules.
 
 [WebAssembly]: /webassembly/
 [Bindle]: /architecture/#bindle
@@ -190,10 +200,10 @@ For now you must [run Hippo from source](https://github.com/deislabs/hippo/blob/
 
 #### Troubleshooting
 
-* npm run build fails with error gyp: No Xcode or CLT version detected!
+* **npm run build fails with error gyp: No Xcode or CLT version detected**
 
     This is a problem with MacOS Catalina and higher. Follow the [xcode troubleshooting steps from this article](https://medium.com/flawless-app-stories/gyp-no-xcode-or-clt-version-detected-macos-catalina-anansewaa-38b536389e8d) to address it.
-* The Hippo control panel CSS isn't rendering properly.
+* **The Hippo control panel CSS isn't rendering properly**
 
     Repeat the `npm run build` command in the Hippo directory in the hippo repository. Check the logs for any errors (such as the one above in the previous troubleshooting step) and address them.
 
@@ -334,7 +344,7 @@ Use yo-wasm to generate your application.
 
 #### Troubleshooting
 
-* The yo wasm command fails with "connect ECONNREFUSED 1127.0.0.1:80"
+* **The yo wasm command fails with "connect ECONNREFUSED 1127.0.0.1:80"**
 
     ```plaintext
     Setting up your Hippo application...
@@ -344,7 +354,7 @@ Use yo-wasm to generate your application.
 
     This error indicates that either your Bindle Server URL or Hippo Service URL were invalid URLs and could not be parsed.
     Verify that you have `BINDLE_SERVER_URL` and `HIPPO_SERVICE_URL` set correctly, and then re-run `yo wasm`.
-* The yo wasm command fails with "unable to verify the first certificate"
+* **The yo wasm command fails with "unable to verify the first certificate"**
     
     ```plaintext
     Setting up your Hippo application...
@@ -397,13 +407,31 @@ Then Hippo will note the new version and deploy it.
     ```plaintext
     INFO  wagi] => Starting server on 127.0.0.1:32768
     ```
-1. Open your web browser and navigate to http://127.0.0.1:32768. You should see "Hello, world!" printed on the page.
+1. Open your web browser and navigate to <http://127.0.0.1:32768>. You should see "Hello, world!" printed on the page.
 
 #### Troubleshooting
 
-* hippofactory fails with the error "No such file or directory"
+* **hippofactory fails with the error "No such file or directory"**
+    
     This can occur when you try to publish before the application is compiled to wasm+WASI.
     Check that all files referenced by your HIPPOFACTS file, such as the handler for target/wasm32-wasi/release/quickstart.wasm, exits.
 
+## Summary
 
-* look at hippo logs to see the port that it's hosted on (will show in UI later)
+Let's stop and consider what we have seen, and how it demonstrates the potential of Hippo.
+We do not expect developers to run Hippo or Bindle themselves, it was necessary only to see it in action before public services are available.
+So putting those pieces aside for a moment, what does the developer experience look like with Hippo?
+
+1. Scaffold an application for WebAssembly in a number of languages with the yo wasm.
+1. Test and iterate locally on your application using standard tools, targeting your development machine's architecture, not wasm. Essentially, develop your application just as you do today.
+1. Register your application with a Hippo server when you are ready to share it.
+1. Publish new versions of your application to a Bindle server, triggering Hippo deployments automatically.
+
+**You focus on your application, and Hippo takes care of hosting it.**
+
+<p align="center"><img src="/images/hippo.png" width="64px" /></p>
+
+## Next Steps
+
+* [Understand the WebAssembly technologies upon which Hippo is built](/webassembly/)
+* [Definitions of the components in Hippo's architecture](/architecture/)
