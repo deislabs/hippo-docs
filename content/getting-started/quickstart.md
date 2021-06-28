@@ -21,7 +21,7 @@ While you would not normally run local Hippo or Bindle services, this allows you
 
 [Git]: https://git-scm.com/book/en/v2/Getting-Started-Installing-Git
 [Node.js]: https://nodejs.org/en/download/
-[WASI compatible]: /faq/#what-languages-can-i-use-with-hippo-why-isnt-my-favorite-language-supported
+[WASI compatible]: {{< relref "faq.md#what-languages-can-i-use-with-hippo-why-isnt-my-favorite-language-supported" >}}
 [PowerShell]: https://docs.microsoft.com/en-us/powershell/scripting/install/installing-powershell-core-on-windows
 [.NET 5]: https://dot.net/ 
 [Rust]: https://www.rust-lang.org/tools/install
@@ -43,9 +43,9 @@ For this quickstart, the main concepts that you will use include:
 
     The platform that serves WebAssembly modules.
 
-[WebAssembly]: /webassembly/
-[Bindle]: /architecture/#bindle
-[Hippo]: /architecture/#hippo-server
+[WebAssembly]: {{< relref "webassembly.md" >}}
+[Bindle]: {{< relref "../architecture.md#bindle" >}}
+[Hippo]: {{< relref "../architecture.md#hippo-server" >}}
 
 ## Tasks
 
@@ -130,7 +130,7 @@ This is where you will publish revisions of your application.
 
 Now that you have a Bindle server up and running, the next step is to run a local Hippo server.
     
-[Bindle Server]: /architecture/#bindle-server
+[Bindle Server]: {{< relref "../architecture.md#bindle-server" >}}
 [PowerShell Profile]: https://www.howtogeek.com/126469/how-to-create-a-powershell-profile/
 
 ### Install WAGI
@@ -389,6 +389,7 @@ Then Hippo will note the new version and deploy it.
     ```
 
     The quickstart application defines a single endpoint that is handled by the WebAssembly module.
+    Learn more about how to [Configure an application with HIPPOFACTS][hippofacts].
 
 1. Use hippofactory to package your application into a bindle and push it to your local Bindle server.
     This command relies upon HIPPO_SERVICE_URL, HIPPO_USERNAME, and HIPPO_PASSWORD.
@@ -429,9 +430,12 @@ So putting those pieces aside for a moment, what does the developer experience l
 
 **You focus on your application, and Hippo takes care of hosting it.**
 
-<p align="center"><img src="/images/hippo.png" width="64px" /></p>
+{{% hippo align=center %}}
 
 ## Next Steps
 
-* [Understand the WebAssembly technologies upon which Hippo is built](/webassembly/)
-* [Definitions of the components in Hippo's architecture](/architecture/)
+* [Understand the WebAssembly technologies upon which Hippo is built]({{< relref "webassembly.md" >}})
+* [Definitions of the components in Hippo's architecture]({{< relref "../architecture.md" >}})
+* [Configure an application with HIPPOFACTS][hippofacts]
+
+[hippofacts]: {{< relref "../configuration.md" >}}

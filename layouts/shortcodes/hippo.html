@@ -1,0 +1,2 @@
+{{ $align := .Get "align" }}
+{{ if ne $align nil }}<p align="{{ $align }}"><img src="/images/hippo.png" style="height: 2em;" /></p>{{ else }}<img src="/images/hippo.png" style="height: 2em;" />{{ end }}
