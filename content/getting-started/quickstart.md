@@ -44,8 +44,8 @@ For this quickstart, the main concepts that you will use include:
     The platform that serves WebAssembly modules.
 
 [WebAssembly]: {{< relref "webassembly.md" >}}
-[Bindle]: {{< relref "../architecture.md#bindle" >}}
-[Hippo]: {{< relref "../architecture.md#hippo-server" >}}
+[Bindle]: {{< relref "/concepts/_index.md#bindle" >}}
+[Hippo]: {{< relref "/concepts/_index.md#hippo-server" >}}
 
 ## Tasks
 
@@ -130,7 +130,7 @@ This is where you will publish revisions of your application.
 
 Now that you have a Bindle server up and running, the next step is to run a local Hippo server.
     
-[Bindle Server]: {{< relref "../architecture.md#bindle-server" >}}
+[Bindle Server]: {{< relref "/concepts/_index.md#bindle-server" >}}
 [PowerShell Profile]: https://www.howtogeek.com/126469/how-to-create-a-powershell-profile/
 
 ### Install WAGI
@@ -435,7 +435,7 @@ So putting those pieces aside for a moment, what does the developer experience l
 ## Next Steps
 
 * [Understand the WebAssembly technologies upon which Hippo is built]({{< relref "webassembly.md" >}})
-* [Definitions of the components in Hippo's architecture]({{< relref "../architecture.md" >}})
+* [Definitions of the components in Hippo's architecture]({{< relref "/concepts/_index.md" >}})
 * [Configure an application with HIPPOFACTS][hippofacts]
 
-[hippofacts]: {{< relref "../configuration.md" >}}
+[hippofacts]: {{< relref "/tutorials/configuration.md" >}}

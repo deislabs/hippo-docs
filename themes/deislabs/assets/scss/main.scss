@@ -300,17 +300,12 @@ body {
   }
 
   .td-sidebar-nav__section-title {
-    font-family: $displaytype;
     color: $midnight;
     padding: 0.25rem 0;
   }
 
   ul {
     padding-right: 0 !important;
-  }
-
-  li {
-    padding-bottom: 1.5rem;
   }
 
   a.td-sidebar-link {

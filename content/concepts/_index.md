@@ -1,8 +1,9 @@
 ---
 title: Architecture
+linkTitle: Concepts
 description: Definitions of the various components of Hippo
 type: docs
-weight: 20
+weight: 50
 ---
 
 * [Bindle](#bindle)
