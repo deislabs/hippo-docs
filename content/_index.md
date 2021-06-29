@@ -26,7 +26,7 @@ Develop your application with familiar languages and proven tools, and then comp
 
 ### <i class="fas fa-rocket"></i> Push
 
-Package your module and any supporting files into a **bindle** and then push it to a **bindle hub**.
+Package your module and any supporting files into a **bindle** and then push it to a **Bindle Server**.
 
 ### <i class="fas fa-user-plus"></i> Register
 
