@@ -38,4 +38,12 @@ Hippo keeps an eye out for new versions of your application by querying a bindle
 New versions that match your channel settings are automatically deployed.
 Hippo serves the assets in your application's bindle, load balances the application, and provisions https certificates for you.
 
+# Project Status
+
+Hippo and its components are a proof-of-concept, ready for you to try out and provide feedback, but is not production ready.
+
+Do you have feedback or ideas to make Hippo better?
+We are looking for contributions, so please open a new topic on our GitHub discussion board, submit issues, or even a pull request.
+We would love to collaborate with you! 💖
+
 [wasm]: webassembly/
