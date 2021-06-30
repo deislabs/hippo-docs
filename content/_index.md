@@ -4,46 +4,32 @@ type: docs
 no_list: true
 ---
 
-Here at Deis Labs we are cooking up a better ways to develop and run WebAssembly workloads with the Hippo project and a few other supporting components. Not familiar with WebAssembly? Take a quick tour of [WebAssembly in a Hurry][wasm] to get up to speed.
+Hippo is an open source Platform as a Service (PaaS), making it easier to deploy and manage applications following modern cloud-native best practices.
 
-**Hippo** streamlines deploying and serving WebAssembly so that you can focus on your app.
-You can package your Web Assembly module with any supporting files, such as static HTML files and images, and then deploy your application to a server optimized for WebAssembly services.
+Hippo includes capabilities for building and deploying applications from source, simple application configuration, automatically deploying and rolling back releases, managing domain names, providing seamless edge routing, log aggregation, and sharing applications with other teams. All of this is exposed through beautiful web interface and simple-to-use developer tooling.
 
+Under the hood, Hippo takes advantage of several modern cloud-native tools like WebAssembly to provide a safe, secure, sandboxed environment to compile, deploy, run, and manage applications.
 
-> Lookout, hungry hungry hippos are serving up your web assembly. Omnomnom, yum! {{% hippo %}}
+Here at DeisLabs we are cooking up a better ways to develop and run WebAssembly workloads. Not familiar with WebAssembly? Take a quick tour of [WebAssembly in a Hurry][wasm] to get up to speed.
 
+> Lookout, hungry hungry hippos are serving up your WebAssembly. Omnomnom, yum! {{% hippo %}}
 
-Our goal is a Platform as a Service (PaaS) that makes it easier for a developer to create a WebAssembly module and quickly get it up and running, without having to dive into the complexities of hosting.
+Our goal is to provide a platform for developers to take advantage of modern technologies without having to dive into the technical details of hosting.
 
-![drawing of Hippo architecture](/images/hippo-architecture.png)
+We are also focused on providing a platform for cloud engineers looking for a secure and safe runtime platform for their developers, with all the bells and whistles required to deploy applications with ease.
 
-### <i class="fas fa-file-code"></i> Author
+# Getting Started
 
-Scaffold a WebAssembly module using [Yeoman] for AssemblyScript, C, Rust, or Swift.
-Develop your application with familiar languages and proven tools, and then compile to WebAssembly.
+To get started with Hippo, follow our [Quick Start Guide](/getting-started/quickstart.md).
 
-[Yeoman]: https://yeoman.io/
+Take a deep dive into Hippo in our [Topic Guides](/topics/README.md).
 
-### <i class="fas fa-rocket"></i> Push
-
-Package your module and any supporting files into a **bindle** and then push it to a **Bindle Server**.
-
-### <i class="fas fa-user-plus"></i> Register
-
-Register your application with a **Hippo** server, defining a deployment **channel** which specifies whether an exact version should be deployed, or the latest version from a version range.
-
-### <i class="fas fa-play"></i> Serve
-
-Hippo keeps an eye out for new versions of your application by querying a bindle server.
-New versions that match your channel settings are automatically deployed.
-Hippo serves the assets in your application's bindle, load balances the application, and provisions https certificates for you.
+Feel like contibuting some code or want to get started as a maintainer? Read the [Contributing Guide](/topics/contributing.md) to get started.
 
 # Project Status
 
-Hippo and its components are a proof-of-concept, ready for you to try out and provide feedback, but is not production ready.
+Hippo is experimental code. It is not considered production-grade by its developers, nor is it "supported" software. However, it is ready for you to try out and provide feedback.
 
-Do you have feedback or ideas to make Hippo better?
-We are looking for contributions, so please open a new topic on our GitHub discussion board, submit issues, or even a pull request.
-We would love to collaborate with you! 💖
+DeisLabs is experimenting with many WebAssembly technologies right now. This is one of a multitude of projects (including [Krustlet, the WebAssembly Kubelet](https://github.com/deislabs/krustlet)) designed to test the limits of WebAssembly as a cloud-based runtime.
 
 [wasm]: webassembly/
