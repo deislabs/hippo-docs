@@ -63,3 +63,13 @@ For example, if three bindles all contained jquery v3.6.0, then the parcel is do
 ## Hippo CLI
 
 The hippo command-line tool is currently named hippofactory, which will probably change in the near future.
+
+## Wagi
+
+Wagi is a lightweight server for executing WebAssembly modules as HTTP handlers.
+Wagi provides a minimal framework for writing microservices and web apps in WebAssembly.
+It provides a way to map request handlers to WebAssembly modules.
+For example, it allows you to declare that all request to `http://example.com/hello`
+will be sent to the `hello.wasm` module.
+A module is passed a single request, and is expected to produce a response.
+This is similar to CGI, WSGI, and other web service patterns.

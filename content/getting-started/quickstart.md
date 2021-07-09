@@ -6,17 +6,21 @@ weight: 1
 ---
 
 For this quickstart, you will locally run the components of Hippo, create a hello world application, and then run it on Hippo.
-While you would not normally run local Hippo or Bindle services, this allows you to understand Hippo's architecture and try it out before public services are available.
+This quickstart is broken into two parts:
+
+1. Install and configure the Hippo PaaS system (Hippo, Wagi, Bindle). This is typically done once for a team.
+1. Develop a Hippo application (Yo-wasm, Hippofactory).
+
+If you already have a Hippo PaaS available, you can skip the first part.
+However, you will need the URLs for the Hippo server and the Bindle server.
 
 ## Prerequisites
 
 * [Node.js] installed with npm.
-* [WASI compatible] programming language installed, either AssemblyScript, C, Rust, or Swift.
+* [WASI compatible] programming language installed, either AssemblyScript, C, Rust, or Swift. This is required for Part 2.
 * [PowerShell] v6+, if using Windows.
 * [Git] installed. This is a temporary development dependency until [Hippo] and [WAGI] are publishing releases.
 * [.NET 5]. This is temporary development dependency until Hippo is publishing releases.
-* [Rust]. This is a temporary development dependency until WAGI is publishing releases.
-* POSIX developer environment such as linux, macos or WSL, with developer tools such as make, bash, curl, etc installed. This is a temporary development dependency until WAGI is publishing releases.
 
 
 [Git]: https://git-scm.com/book/en/v2/Getting-Started-Installing-Git
@@ -38,22 +42,26 @@ For this quickstart, the main concepts that you will use include:
     Not familiar with WebAssembly? Take a quick tour of [WebAssembly in a Hurry][WebAssembly] to get up to speed.
 * [Bindle]
 
-    A versioned package containing your WebAssembly module and supporting files.
+    A packaging service, where a versioned package (a _bindle_) contains your WebAssembly module and supporting files.
 * [Hippo]
 
     The platform that serves WebAssembly modules.
+* [Wagi]
+
+    A web service that accepts HTTP connections and passes the requests to WebAssembly modules.
 
 [WebAssembly]: {{< relref "webassembly.md" >}}
 [Bindle]: {{< relref "/concepts/_index.md#bindle" >}}
 [Hippo]: {{< relref "/concepts/_index.md#hippo-server" >}}
+[Hippo]: {{< relref "/concepts/_index.md#wagi" >}}
 
-## Tasks
+## Part 1: Setting Up the Hippo PaaS
+
+In this part, we will focus on the following three steps:
 
 1. [Run a Bindle Server](#run-a-bindle-server)
 1. [Install WAGI](#install-wagi)
 1. [Run a Hippo Server](#run-a-hippo-server)
-1. [Create a WebAssembly application](#create-a-webassembly-application)
-1. [Publish the application to Hippo](#publish-the-application-to-hippo)
 
 ### Run a Bindle Server
 
@@ -61,31 +69,31 @@ First, set up a local installation of [Bindle Server].
 This is where you will publish revisions of your application.
 
 1. Download the [latest release](https://github.com/deislabs/bindle/releases) of bindle for your operating system.
-    Extract the bindle and bindle-server binaries and move them to a directory that is in your PATH.
+    Extract the `bindle` and `bindle-server` binaries and move them to a directory that is in your `PATH`.
 
     **linux**
     ```bash
-    curl -sL -o /tmp/bindle-v0.3.1-linux-amd64.tar.gz https://bindle.blob.core.windows.net/releases/bindle-v0.3.1-linux-amd64.tar.gz
-    mkdir -p /tmp/bindle-v0.3.1-linux-amd64
-    tar -C /tmp/bindle-v0.3.1-linux-amd64 -xzf /tmp/bindle-v0.3.1-linux-amd64.tar.gz
-    mv /tmp/bindle-v0.3.1-linux-amd64/bindle* /usr/local/bin/
+    curl -sL -o /tmp/bindle-v0.4.1-linux-amd64.tar.gz https://bindle.blob.core.windows.net/releases/bindle-v0.3.1-linux-amd64.tar.gz
+    mkdir -p /tmp/bindle-v0.4.1-linux-amd64
+    tar -C /tmp/bindle-v0.4.1-linux-amd64 -xzf /tmp/bindle-v0.3.1-linux-amd64.tar.gz
+    mv /tmp/bindle-v0.4.1-linux-amd64/bindle* /usr/local/bin/
     ```
 
     **macos**
     ```bash
-    curl -sL -o /tmp/bindle-v0.3.1-macos-amd64.tar.gz https://bindle.blob.core.windows.net/releases/bindle-v0.3.1-macos-amd64.tar.gz
-    mkdir -p /tmp/bindle-v0.3.1-macos-amd64
-    tar -C /tmp/bindle-v0.3.1-macos-amd64 -xzf /tmp/bindle-v0.3.1-macos-amd64.tar.gz
-    mv /tmp/bindle-v0.3.1-macos-amd64/bindle* /usr/local/bin/
+    curl -sL -o /tmp/bindle-v0.4.1-macos-amd64.tar.gz https://bindle.blob.core.windows.net/releases/bindle-v0.4.1-macos-amd64.tar.gz
+    mkdir -p /tmp/bindle-v0.4.1-macos-amd64
+    tar -C /tmp/bindle-v0.4.1-macos-amd64 -xzf /tmp/bindle-v0.4.1-macos-amd64.tar.gz
+    mv /tmp/bindle-v0.4.1-macos-amd64/bindle* /usr/local/bin/
     ```
 
     **powershell**
     ```powershell
-    (New-Object System.Net.WebClient).DownloadFile("https://bindle.blob.core.windows.net/releases/bindle-v0.3.1-windows-amd64.tar.gz", "$env:TEMP\bindle-v0.3.1-windows-amd64.tar.gz")
-    mkdir -force -path $env:TEMP\bindle-v0.3.1-windows-amd64
-    tar -C $env:TEMP\bindle-v0.3.1-windows-amd64 -xzf $env:TEMP\bindle-v0.3.1-windows-amd64.tar.gz
+    (New-Object System.Net.WebClient).DownloadFile("https://bindle.blob.core.windows.net/releases/bindle-v0.4.1-windows-amd64.tar.gz", "$env:TEMP\bindle-v0.4.1-windows-amd64.tar.gz")
+    mkdir -force -path $env:TEMP\bindle-v0.4.1-windows-amd64
+    tar -C $env:TEMP\bindle-v0.4.1-windows-amd64 -xzf $env:TEMP\bindle-v0.4.1-windows-amd64.tar.gz
     mkdir -force -path $env:USERPROFILE\bin
-    mv -force $env:TEMP\bindle-v0.3.1-windows-amd64\bindle* $env:USERPROFILE\bin\
+    mv -force $env:TEMP\bindle-v0.4.1-windows-amd64\bindle* $env:USERPROFILE\bin\
     $env:PATH+=";$env:USERPROFILE\bin"
     ```
 
@@ -97,16 +105,16 @@ This is where you will publish revisions of your application.
     bindle-server &
     ```
 
-1. Set the BINDLE_SERVER_URL environment variable, used by the remainder of this quickstart for bindle, hippofactory and hippo server.
+1. Set the BINDLE_URL environment variable, used by the remainder of this quickstart for bindle, hippofactory and hippo server.
 
     **posix**
     ```bash
-    export BINDLE_SERVER_URL="http://localhost:8080/v1"
+    export BINDLE_URL="http://localhost:8080/v1"
     ```
 
     **powershell**
     ```powershell
-    $env:BINDLE_SERVER_URL="http://localhost:8080/v1"
+    $env:BINDLE_URL="http://localhost:8080/v1"
     ```
 
 1. Verify that your Bindle server is available by listing all registered bindles:
@@ -135,34 +143,37 @@ Now that you have a Bindle server up and running, the next step is to run a loca
 
 ### Install WAGI
 
-<i class="fas fa-tools"></i> Instructions pending published releases of WAGI.
-For now you must install [WAGI from source].
+1. Download the [latest release](https://github.com/deislabs/wagi/releases) of bindle for your operating system.
+    Extract the `wagi` binary and move it to a directory that is in your `PATH`.
 
-1. Clone the [WAGI] repository to your local development environment.
-
+    **linux**
     ```bash
-    git clone https://github.com/deislabs/wagi.git
+    curl -sL -o wagi-v0.2.0-linux-amd64.tar.gz https://github.com/deislabs/wagi/releases/download/v0.2.0/wagi-v0.2.0-linux-amd64.tar.gz
+    mkdir -p /tmp/wagi-v0.2.0-linux-amd64
+    tar -C /tmp/wagi-v0.2.0-linux-amd64 -xzf /tmp/wagi-v0.2.0-linux-amd64.tar.gz
+    mv /tmp/wagi-v0.2.0-linux-amd64/wagi /usr/local/bin/
     ```
-1. Compile the wagi binary.
 
+    **macos**
     ```bash
-    cd wagi
-    make build
-    ```
-1. Move the wagi binary to a location in your PATH.
-
-    **posix**
-    ```bash
-    mv target/release/wagi /usr/local/bin
+    curl -sL -o wagi-v0.2.0-linux-amd64.tar.gz https://github.com/deislabs/wagi/releases/download/v0.2.0/wagi-v0.2.0-macos-amd64.tar.gz
+    mkdir -p /tmp/wagi-v0.2.0-macos-amd64
+    tar -C /tmp/wagi-v0.2.0-macos-amd64 -xzf /tmp/wagi-v0.2.0-macos-amd64.tar.gz
+    mv /tmp/wagi-v0.2.0-macos-amd64/wagi /usr/local/bin/
     ```
 
     **powershell**
     ```powershell
-    mv -force target\release\wagi.exe $env:USERPROFILE\bin\
-    $env:PATH+=";$env:USERPROFILE/bin"
+    (New-Object System.Net.WebClient).DownloadFile("https://github.com/deislabs/wagi/releases/download/v0.2.0/wagi-v0.2.0-windows-amd64.tar.gz", "$env:TEMP\wagi-v0.2.0-windows-amd64.tar.gz")
+    mkdir -force -path $env:TEMP\wagi-v0.2.0-windows-amd64
+    tar -C $env:TEMP\wagi-v0.2.0-windows-amd64 -xzf $env:TEMP\wagi-v0.2.0-windows-amd64.tar.gz
+    mkdir -force -path $env:USERPROFILE\bin
+    mv -force $env:TEMP\wagi-v0.2.0-windows-amd64\wagi $env:USERPROFILE\bin\
+    $env:PATH+=";$env:USERPROFILE\bin"
     ```
 
-[WAGI from source]: https://github.com/deislabs/wagi/blob/main/docs/installation.md
+You can test that the installation was successful by running `wagi --help`.
+You do not need to run Wagi as a server. Hippo will manage that.
 
 ### Run a Hippo Server
 
@@ -200,12 +211,26 @@ For now you must [run Hippo from source](https://github.com/deislabs/hippo/blob/
 
 #### Troubleshooting
 
-* **npm run build fails with error gyp: No Xcode or CLT version detected**
+* **npm run build fails with _error gyp: No Xcode or CLT version detected_**
 
     This is a problem with MacOS Catalina and higher. Follow the [xcode troubleshooting steps from this article](https://medium.com/flawless-app-stories/gyp-no-xcode-or-clt-version-detected-macos-catalina-anansewaa-38b536389e8d) to address it.
 * **The Hippo control panel CSS isn't rendering properly**
 
     Repeat the `npm run build` command in the Hippo directory in the hippo repository. Check the logs for any errors (such as the one above in the previous troubleshooting step) and address them.
+
+
+## Part 2: Writing a Hippo Application
+
+At this point, you should have a Bindle and Hippo running, and Wagi installed.
+To successfully complete Part 2, you will need to have the URLs for Bindle and Hippo ready
+at hand.
+If you followed the steps above, Hippo's URL will be `http://localhost:5001` and Bindle's URL will be `http://localhost:8080/v1`.
+
+Creating a new Hippo application has three steps:
+
+1. [Install yo-wasm](#install-yo-wasm)
+1. [Create a WebAssembly application](#create-a-webassembly-application)
+1. [Publish the application to Hippo](#publish-the-application-to-hippo)
 
 ### Install yo-wasm
 
@@ -237,13 +262,15 @@ We have created a tool, [yo-wasm], that scaffolds a new application in either As
 ### Create a WebAssembly application
 
 Use yo-wasm to generate your application.
+In this example, we will create a Rust application, though C, Swift, and AssemblyScript
+are also supported.
 
 1. Define the following environment variables. These are used by yo-wasm, and hippofactory.
 
     **posix**
     ```bash
     export HIPPO_SERVICE_URL=HIPPO_SERVICE_URL=https://localhost:5001
-    export BINDLE_SERVER_URL=http://localhost:8080/v1/
+    export BINDLE_URL=http://localhost:8080/v1/
     export HIPPO_USERNAME=admin
     export HIPPO_PASSWORD=Passw0rd!
     ```
@@ -251,7 +278,7 @@ Use yo-wasm to generate your application.
     **powershell**
     ```powershell
     $env:HIPPO_SERVICE_URL="HIPPO_SERVICE_URL=https://localhost:5001"
-    $env:BINDLE_SERVER_URL="http://localhost:8080/v1/"
+    $env:BINDLE_URL="http://localhost:8080/v1/"
     $env:HIPPO_USERNAME="admin"
     $env:HIPPO_PASSWORD="Passw0rd!"
     ```
@@ -353,7 +380,7 @@ Use yo-wasm to generate your application.
     ```
 
     This error indicates that either your Bindle Server URL or Hippo Service URL were invalid URLs and could not be parsed.
-    Verify that you have `BINDLE_SERVER_URL` and `HIPPO_SERVICE_URL` set correctly, and then re-run `yo wasm`.
+    Verify that you have `BINDLE_URL` and `HIPPO_SERVICE_URL` set correctly, and then re-run `yo wasm`.
 * **The yo wasm command fails with "unable to verify the first certificate"**
     
     ```plaintext
@@ -414,14 +441,19 @@ Then Hippo will note the new version and deploy it.
 
 * **hippofactory fails with the error "No such file or directory"**
     
-    This can occur when you try to publish before the application is compiled to wasm+WASI.
-    Check that all files referenced by your HIPPOFACTS file, such as the handler for target/wasm32-wasi/release/quickstart.wasm, exits.
+    This can occur when you try to publish before the application is compiled to wasm32-wasi.
+    Check that all files referenced by your HIPPOFACTS file, such as the handler for `target/wasm32-wasi/release/quickstart.wasm`, exits.
 
 ## Summary
 
-Let's stop and consider what we have seen, and how it demonstrates the potential of Hippo.
-We do not expect developers to run Hippo or Bindle themselves, it was necessary only to see it in action before public services are available.
-So putting those pieces aside for a moment, what does the developer experience look like with Hippo?
+This quickstart has walked through two separate stages:
+
+1. Set up the Hippo PaaS, which includes Hippo, Bindle, and Wagi
+1. Write a Hippo app
+
+The Hippo PaaS offers a team of developers a platform through which they can develop and deploy WebAssembly microservices or web applications.
+Typically, teams will share a Hippo PaaS or will use a hosted version.
+When it comes to writing applications, the development process looks like this:
 
 1. Scaffold an application for WebAssembly in a number of languages with the yo wasm.
 1. Test and iterate locally on your application using standard tools, targeting your development machine's architecture, not wasm. Essentially, develop your application just as you do today.
