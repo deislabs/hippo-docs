@@ -269,7 +269,7 @@ are also supported.
 
     **posix**
     ```bash
-    export HIPPO_SERVICE_URL=HIPPO_SERVICE_URL=https://localhost:5001
+    export HIPPO_URL=HIPPO_URL=https://localhost:5001
     export BINDLE_URL=http://localhost:8080/v1/
     export HIPPO_USERNAME=admin
     export HIPPO_PASSWORD=Passw0rd!
@@ -277,7 +277,7 @@ are also supported.
 
     **powershell**
     ```powershell
-    $env:HIPPO_SERVICE_URL="HIPPO_SERVICE_URL=https://localhost:5001"
+    $env:HIPPO_URL="HIPPO_URL=https://localhost:5001"
     $env:BINDLE_URL="http://localhost:8080/v1/"
     $env:HIPPO_USERNAME="admin"
     $env:HIPPO_PASSWORD="Passw0rd!"
@@ -331,7 +331,7 @@ are also supported.
           I don't want to publish the module
         ```
     * Use "https://localhost:5001" for the Hippo Service URL.
-        This defaults to the HIPPO_SERVICE_URL environment variable which should be set.
+        This defaults to the HIPPO_URL environment variable which should be set.
         ```plaintext
         ? What is the URL of your Hippo service? (https://localhost:5001)
         ``` 
@@ -380,7 +380,7 @@ are also supported.
     ```
 
     This error indicates that either your Bindle Server URL or Hippo Service URL were invalid URLs and could not be parsed.
-    Verify that you have `BINDLE_URL` and `HIPPO_SERVICE_URL` set correctly, and then re-run `yo wasm`.
+    Verify that you have `BINDLE_URL` and `HIPPO_URL` set correctly, and then re-run `yo wasm`.
 * **The yo wasm command fails with "unable to verify the first certificate"**
     
     ```plaintext
@@ -419,7 +419,7 @@ Then Hippo will note the new version and deploy it.
     Learn more about how to [Configure an application with HIPPOFACTS][hippofacts].
 
 1. Use hippofactory to package your application into a bindle and push it to your local Bindle server.
-    This command relies upon HIPPO_SERVICE_URL, HIPPO_USERNAME, and HIPPO_PASSWORD.
+    This command relies upon HIPPO_URL, HIPPO_USERNAME, and HIPPO_PASSWORD.
 
     ```bash
     hippofactory -k -v production HIPPOFACTS
