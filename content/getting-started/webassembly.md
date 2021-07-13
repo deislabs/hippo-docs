@@ -7,11 +7,11 @@ weight: 50
 
 Let's take a quick tour of WebAssembly to get you familiar with foundations of Hippo.
 
-* [WebAssembly (wasm)](#webassembly-wasm)
+* [WebAssembly (Wasm)](#webassembly-wasm)
 * [WebAssembly System Interface (WASI)](#webassembly-system-interface-wasi)
 * [What workloads are suited for WebAssembly?](#what-workloads-are-suited-for-webassembly)
 
-### WebAssembly (wasm)
+### WebAssembly (Wasm)
 
 Some programming languages, such as Go, Rust or C, are compiled languages.
 You select the operating system and CPU architecture where the code is going to execute, and it is turned into machine code suitable to run in that environment.
@@ -25,14 +25,23 @@ This is possible because WebAssembly relies upon a WebAssembly runtime available
 The compiled output isn't native machine code, and instead is byte code that is capable of being executed by a WebAssembly runtime.
 
 A WebAssembly runtime handles executing a module in a _sandbox_, isolated from the host computer that is running the module.
-Modules cannot access host resources such as the filesystem or host network, and do not run as root.
-Though originally WebAssembly was intended to execute in the web browser, it can be executed outside the web browser too.
+By default, modules cannot access host resources such as the filesystem or host network.
+The host (the person running the module) can choose to grant certain capabilities to a module.
+For example, one may allow a module to only load a specific file from the filesystem.
+WebAssembly makes sure that _only that file_ can be accessed, and the module can't "breakout" and access other files.
+
+Given WebAssembly's history, this model makes sense.
+WebAssembly was intended to execute in the web browser.
+And a browser should not inherently trust a random binary it downloaded from the internet.
+But that security model works well in other contexts.
+Standalone WebAssembly runtimes can be used to execute modules outside the browser.
 
 If you are familiar with Docker containers, this will sound familiar.
-Containers can also be isolated, however they don't execute in a true sandbox in the same way that WebAssembly does.
+Containers can also be isolated.
+However they don't execute in a true sandbox in the same way that WebAssembly does.
 Containers execute as processes directly on the host machine and use Linux functionality such as namespaces and cgroups to isolate the container.
 WebAssembly modules execute are compiled binaries that execute inside a WebAssembly virtual machine.
-Solomon Hykes famously [tweeted](https://twitter.com/solomonstre/status/1111004913222324225?s=20):
+The creator of Docker, Solomon Hykes, famously [tweeted](https://twitter.com/solomonstre/status/1111004913222324225?s=20):
 
 <blockquote class="twitter-tweet"><p lang="en" dir="ltr">If WASM+WASI existed in 2008, we wouldn&#39;t have needed to created Docker. That&#39;s how important it is. Webassembly on the server is the future of computing. A standardized system interface was the missing link. Let&#39;s hope WASI is up to the task! <a href="https://t.co/wnXQg4kwa4">https://t.co/wnXQg4kwa4</a></p>&mdash; Solomon Hykes (@solomonstre) <a href="https://twitter.com/solomonstre/status/1111004913222324225?ref_src=twsrc%5Etfw">March 27, 2019</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script> 
 
@@ -48,27 +57,44 @@ This means that you can often continue coding in your favorite language and with
 Running in an isolated sandbox is great for security, but poses a challenge to developers when implementing traditional workloads.
 Questions immediately come up such as _How do I serve static files associated with my application?_ or _How do I communicate via sockets?_
 
-WebAssembly System Interface (WASI) defines an API through which WebAssembly modules that are not running in a web browser can interact with its environment and the outside world, specifically with the filesystem and network.
+The WebAssembly format itself does not include a way for modules to access any resources outside of the host.
+To allow a module to access files, environment variables, and other system resources,
+an extension to WebAssembly was needed.
 
-Not all languages support WASI yet, currently AssemblyScript, C, Rust, and Swift can be compiled to target **wasm32-wasi** so that WASI support is baked into the resulting binary.
+WebAssembly System Interface (WASI) defines an API through which WebAssembly modules can interact with the environment and the outside world, specifically with the filesystem and network.
+WASI defines a _capabilities model_ in which the host (the person or process managing the runtime)
+can declare what the module is allowed to see or access.
+Thus, WASI makes it possible to safely and precisely identify which things a running module can access.
+
+Not all languages that support WebAssembly also support WASI.
+We frequently use several languages that do support WASI: AssemblyScript, C, Rust, Grain, Zig, and Swift.
+As the WASI standard matures, we expect many other languages to add support.
 
 ### WebAssembly Gateway Interface (WAGI)
 
-Another common question that immediately comes up is _Can I use WebAssembly to implement microservices_? Luckily the answer will soon be yes!
+Another common question that immediately comes up is _Can I use WebAssembly to implement microservices_?
+That is where WAGI comes in.
 
-WebAssembly Gateway Interface (WAGI) allows you to run WebAssembly WASI binaries as HTTP handlers, and was inspired by CGI.
+WebAssembly, even with WASI, does not provide access to networking primitives such as sockets.
+So it is not possible to compile a full web server to WebAssembly+WASI.
+
+WebAssembly Gateway Interface (Wagi) takes a different, and well explored, approach.
+WAGI allows you to run WebAssembly WASI binaries as HTTP handlers.
+This pattern has been implemented for many other technologies, including PHP, Perl, Java Servlets,
+and ASP.net. But we took our inspiration from CGI.
+
 Back in the day, web servers such as Apache, had support for writing HTTP request handlers in any language, as long as it adhered to the Common Gateway Interface (CGI).
 CGI was the precursor to what we now call Functions as a Service, or Serverless, and WAGI takes the next step so that you can define your functions in WebAssembly.
 
-A WAGI compliant server can be configured with mappings that define a WebAssembly binary that should handle a path, such as all requests for /calculator are routed to calculator.wasm, and the response is returned back to the client.
+A Wagi-compliant server can be configured with mappings that define a WebAssembly binary that should handle a path, such as all requests for `/calculator` are routed to `calculator.wasm`. The WebAssembly module is executed for each incomming request, and its output is sent back as the response to the client.
 
-WebAssembly Gateway Interface was created by [Deis Labs], and is currently defined in a few documents that build off of CGI and highlight the differences:
+Wagi was created by [Deis Labs], and is currently defined in a few documents that build off of CGI and highlight the differences:
 
 * [WAGI Architecture](https://github.com/deislabs/wagi/blob/main/docs/architecture.md)
 * [WAGI Environment Variables](https://github.com/deislabs/wagi/blob/main/docs/environment_variables.md)
 * [Writing a WAGI Module](https://github.com/deislabs/wagi/blob/main/docs/writing_modules.md)
 
-WAGI is currently supported two servers: a standalone [WAGI Server](https://github.com/deislabs/wagi) and an extension of .NET with [WAGI.NET](https://github.com/deislabs/wagi-dotnet).
-Though existing web servers could implement WAGI and support running WebAssembly modules too.
+The Wagi architecture is currently supported in two implementations: a standalone [WAGI Server](https://github.com/deislabs/wagi) and an extension of .NET with [WAGI.NET](https://github.com/deislabs/wagi-dotnet).
+Existing web servers could implement WAGI and support running WebAssembly modules too.
 
 [Deis Labs]: https://deislabs.io
