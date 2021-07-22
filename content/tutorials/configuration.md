@@ -58,4 +58,4 @@ Handlers define endpoints for your application and the WebAssembly module that s
 * **files**": OPTIONAL. A list of relative file paths of static files that should be deployed with the WebAssembly module. These files are available to the module when it is serving requests.
 
 [semver v2]: https://semver.org/spec/v2.0.0.html
-[bindle]: {{< relref "/concepts/_index.md#bindle" >}}
+[bindle]: {{< relref "/topics/concepts.md#bindle" >}}
