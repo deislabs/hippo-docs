@@ -1,4 +1,4 @@
-baseURL = "https://docs.deislabs.io/hippo/"
+baseURL = "https://docs.hippos.rocks"
 languageCode = "en-us"
 title = "Hippo"
 theme = "deislabs"
@@ -52,7 +52,7 @@ enableInlineShortcodes = true
 [[menu.main]]
 	name = "Home"
 	weight = 10
-	url = "https://deislabs.io/"
+	url = "https://hippos.rocks/"
 [[menu.main]]
 	name = "Docs"
 	weight = 20
@@ -61,7 +61,7 @@ enableInlineShortcodes = true
 # Uncomment to add your release versions here
 #[[params.versions]]
 #  version = "v0.1.0"
-#  url = "/hippo/"
+#  url = "/"
 
 
 # Theme Additional params
@@ -81,7 +81,7 @@ enableInlineShortcodes = true
   parent_url = "/"
   footer_logo = true
   footer_logo_img = "logo-with-text.png"
-  footer_url = "/hippo/"
+  footer_url = "/"
   ul_show = 2
 
 [params.ui.feedback]
