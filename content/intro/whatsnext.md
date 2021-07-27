@@ -19,7 +19,7 @@ We’ve put a lot of effort into making Hippo’s documentation useful, clear an
 
 Hippo's documentation is broken into chunks designed to fill different needs:
 
-- The [introductory material](/intro/) is designed for people new to Hippo. It doesn't cover anything in depth, but instead gives a high-level overview of the system.
-- The [topic guides](/topics/) dive deep into individual parts of Hippo. There are complete guides to Hippo's [usage of WebAssembly](/topics/webassembly.md), [WAGI](/topics/wagi.md), and much more.
+- The [introductory material]({{< relref "../intro" >}}) is designed for people new to Hippo. It doesn't cover anything in depth, but instead gives a high-level overview of the system.
+- The [topic guides]({{< relref "../topics" >}}) dive deep into individual parts of Hippo. There are complete guides to Hippo's [usage of WebAssembly]({{< relref "../topics/webassembly.md" >}}) and much more.
 
-Answers to really common questions can be found in the [FAQ](faq.md).
+Answers to really common questions can be found in the [FAQ]({{< relref "faq.md" >}}).

@@ -89,4 +89,4 @@ Open your web browser to <https://localhost:5001> and accept the self-signed
 certificate to view the Hippo Web UI.
 
 Once that's done, proceed to [Step 3: Deploy an
-Application](deploy-your-first-application.md)
+Application]({{< relref "deploy-your-first-application.md" >}})

@@ -38,4 +38,4 @@ $ npm install -g yo
 $ npm install -g generator-wasm
 ```
 
-Once that's done, proceed to [Step 2: Boot Hippo](boot.md)
+Once that's done, proceed to [Step 2: Boot Hippo]({{< relref "boot.md" >}})

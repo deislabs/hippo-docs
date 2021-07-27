@@ -96,4 +96,4 @@ world!"
 Congratulations! You just deployed your first application to Hippo!
 
 The beginner tutorial ends here. In the meantime, you might want to check out
-some pointers on [where to go from here](whatsnext.md).
+some pointers on [where to go from here]({{< relref "whatsnext.md" >}}).
