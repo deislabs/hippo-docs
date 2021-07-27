@@ -96,7 +96,7 @@ It provides a browser-based portal, an API for the client CLI, and the backend m
 
 ## Hippo CLI
 
-The hippo command-line tool is currently named hippofactory, which will probably change in the near future.
+The hippo command-line tool.
 
 ## Wagi
 

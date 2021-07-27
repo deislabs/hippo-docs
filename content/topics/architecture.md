@@ -16,7 +16,7 @@ Insert architecture overview document here
 
 Hippo provides additional functionality to your nomad cluster, including:
 
-- [Hippofactory](https://github.com/deislabs/hippofactory) which assembles your application files as [bindles](https://github.com/deislabs/bindle)
+- [The Hippo CLI](https://github.com/deislabs/hippo-cli) which assembles your application files as [bindles](https://github.com/deislabs/bindle)
 - [A log aggregator](components.md#logger) which gathers logs from all of your application processes
 - A simple REST API which powers the web interface and any external developer tooling
 - automatic application release deployments
