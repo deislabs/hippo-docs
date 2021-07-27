@@ -8,11 +8,19 @@ weight: 4
 Open your web browser to <https://localhost:5001> and accept the self-signed
 certificate to view the Hippo Web UI.
 
-Click "Register" from the right-hand navigation pane and create a new account.
+![Hippo Web UI](/images/hippo-ui-not-logged-in.png)
+
+Click "Register" and create a new account.
+
+![Registration page](/images/hippo-register-account.png)
 
 Next, log in.
 
+![Login page](/images/hippo-login.png)
+
 Once you are logged in, you should be redirected to the Applications page.
+
+![Applications page](/images/hippo-applications.png)
 
 Now go back to your terminal and use `yo wasm` to generate your application. To
 auto-populate some fields, you can set up a few environment variables ahead of
@@ -67,6 +75,8 @@ $ cargo run
 Open your web browser to the Applications page. You should see an application
 named "helloworld" in the list.
 
+![Applications page with "helloworld" app](/images/hippo-applications-with-helloworld.png)
+
 At this point, your application is registered with Hippo, but it is not yet
 being served. You need to first compile the application, package it into a
 bindle, and then push it to the Bindle server. Then Hippo will note the new
@@ -90,6 +100,8 @@ $ hippo push .
 
 Open your web browser to `helloworld.hippos.rocks`. You should see "Hello,
 world!"
+
+![Hello World!](/images/hello-world.png)
 
 ## Summary
 
