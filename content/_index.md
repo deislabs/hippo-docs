@@ -39,6 +39,9 @@ Take a deep dive into Hippo in our [Topic Guides]({{< relref "topics" >}}).
 steps involved in addressing key problems and use-cases. They are more advanced
 than tutorials and assume some knowledge of how Hippo works.
 
+The [Developer Guides]({{< relref "developers" >}}) help you get started
+devloping code for the Hippo project.
+
 # Project Status
 
 Hippo is experimental code. It is not considered production-grade by its
