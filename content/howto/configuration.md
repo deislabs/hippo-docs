@@ -6,7 +6,7 @@ type: docs
 
 A Hippo application's configuration resides in its HIPPOFACTS, or Hippo artifacts, file.
 It defines metadata about the application such as the name, version, associated WebAssembly modules and the routes they handle, and static files that should be deployed with the application.
-The hippofactory command-line tool generates a [bindle] from the HIPPOFACTS file and pushes it to a Bindle server.
+The Hippo command-line tool generates a [bindle] from the HIPPOFACTS file and pushes it to a Bindle server.
 
 <i class="fas fa-window-close"></i> Once a bindle version has been pushed, it is immutable and you must change the version to push it again.
 
