@@ -1,4 +1,4 @@
-baseURL = "https://docs.deislabs.io/hippo/"
+baseURL = "https://docs.hippofactory.dev/"
 languageCode = "en-us"
 title = "Hippo"
 theme = "deislabs"
