@@ -1,6 +1,6 @@
 # Hippo Website
 
-This repository generates the website at https://docs.deislabs.io/hippo/.
+This repository generates the website at https://docs.hippofactory.dev
 
 [![Netlify Status](https://api.netlify.com/api/v1/badges/3165223c-fa90-4905-b1db-73a170577073/deploy-status)](https://app.netlify.com/sites/hippo-docs/deploys)
 
