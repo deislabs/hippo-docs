@@ -60,7 +60,7 @@ $ yo wasm
 ? What is the URL of your Hippo's Bindle server? http://localhost:8080/v1
 ? Would you like to create a new Hippo application for this project? Yes
 ? What storage ID (bindle name) would you like for your Hippo app? bacongobbler/helloworld
-? What domain name would you like for your Hippo app? helloworld.hippos.rocks
+? What domain name would you like for your Hippo app? helloworld.hippofactory.io
 ? Enter your Hippo user name (will become app owner) bacongobbler
 ? Enter your Hippo password **********
 ```
@@ -98,7 +98,7 @@ To push your application to Bindle, use the `hippo` CLI.
 $ hippo push .
 ```
 
-Open your web browser to `helloworld.hippos.rocks`. You should see "Hello,
+Open your web browser to `helloworld.hippofactory.io`. You should see "Hello,
 world!"
 
 ![Hello World!](/images/hello-world.png)
