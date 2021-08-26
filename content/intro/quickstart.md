@@ -43,7 +43,7 @@ There are many ways to boot and install Hippo. You may choose to get up and
 running in a cloud environment, or locally on your laptop.
 
 If you would like to test on your local machine, follow our guide for [running
-locally]({<< relref "boot.md" >}}).
+locally]({{< relref "boot.md" >}}).
 
 ## Step 3: Deploy your First Application
 
