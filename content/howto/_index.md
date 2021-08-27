@@ -1,6 +1,6 @@
 ---
 title: How-to Guides
-weight: 20
+weight: 3
 type: docs
 ---
 
