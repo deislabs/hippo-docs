@@ -1,7 +1,7 @@
 ---
 title: Developer Guides
 type: docs
-weight: 1
+weight: 4
 ---
 
 Interested in contributing to Hippo? Start here.
