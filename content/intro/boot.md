@@ -45,12 +45,18 @@ invoices = []
 
 ## Install WAGI
 
-Hippo deploys applications as HTTP handlers following the Common Gateway
-Interface using a project called WAGI. An incoming HTTP request is sent to
-Hippo, which redirects the request to WAGI. WAGI then launches the application
-as a WebAssembly module, passing the HTTP request to the module. The output of
-the application - usually in the form of HTML - is returned to WAGI, and WAGI
-relays the output back to the browser as an HTTP response.
+Hippo deploys applications using handlers following a Common Gateway
+Interface like approach called WebAssembly Gateway Interface (WAGI). 
+
+An incoming client HTTP request  is sent to the handler, which lauches the application as a WebAssembly module and passes the HTTP request to it using the WAGI protocol. The output of
+the application - usually in the form of HTML - is then returned by the WebAssembly module, again using WAGI protocol, and the handler
+relays the output back to the client as an HTTP response.
+
+There are two implementations of WAGI that can be used in Hippo:
+
+### WAGI binary
+
+The WAGI binary is the default implementation of WAGI used in Hippo, it is a stand-alone binary that can be run on any system. It needs to be installed on the system where the Hippo is running.
 
 Download the [latest release](https://github.com/deislabs/wagi) of WAGI.
 Extract the WAGI binary and move it to a directory that is in your $PATH.
@@ -59,7 +65,11 @@ Extract the WAGI binary and move it to a directory that is in your $PATH.
 $ mv wagi /usr/local/bin/
 ```
 
-No further configuration is necessary for WAGI.
+No further configuration is necessary.
+
+### WAGI-dotnet
+
+Hippo also includes a built in implementation of WAGI called [WAGI-dotnet](https://github.com/deislabs/wagi-dotnet). This implenentation launches a handler as an HTTP listener with the Hippo server process. No additional installation is necessary but to use it the environment variable `HIPPO_JOB_SCHEDULER` must be set to `wagi-dotnet` in the environment where Hippo is running.
 
 ## Boot Hippo
 
@@ -82,6 +92,8 @@ Then run Hippo, pointing at your local Bindle instance:
 
 ```console
 $ export BINDLE_URL=http://localhost:8080/v1
+# If you want to use wagi-dotnet, set HIPPO_JOB_SCHEDULER variable
+$ export HIPPO_JOB_SCHEDULER=wagi-dotnet
 $ dotnet run
 ```
 
