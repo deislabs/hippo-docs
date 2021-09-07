@@ -30,6 +30,7 @@ time.
 $ export HIPPO_URL=https://localhost:5001
 $ export BINDLE_URL=http://localhost:8080/v1
 $ export HIPPO_USERNAME=bacongobbler
+$ export HIPPO_PASSWORD=<hippopassword>
 ```
 
 Create a new directory for your application.
@@ -95,7 +96,7 @@ to serve it.
 To push your application to Bindle, use the `hippo` CLI.
 
 ```console
-$ hippo push .
+$ hippo push -k .
 ```
 
 Open your web browser to `helloworld.hippofactory.io`. You should see "Hello,
