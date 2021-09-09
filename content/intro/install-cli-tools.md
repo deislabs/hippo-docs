@@ -23,7 +23,7 @@ Check your work by running `hippo --version`:
 
 ```console
 $ hippo --version
-hippo-cli 0.5.0
+hippo-cli 0.8.0
 ```
 
 ## Install yo-wasm
