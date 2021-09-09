@@ -50,36 +50,7 @@ $ export BINDLE_URL=https://bindle.deislabs.io/v1
 $ dotnet run
 ```
 
-Then, open https://localhost:5001 to view the browser. The
-default administrator username/password is 'admin' and 'Passw0rd!'.
-
-If you want to test the pre-seeded applications, open http://localhost:32768,
-http://localhost:32769, and http://localhost:32770. There you should find
-three applications all running and served by the local WAGI scheduler.
-
-```console
-$ curl localhost:32768
-Kia ora, world from 1.1.0!
-$ curl localhost:32769
-Hello, world from 1.0.0!
-$ curl localhost:32770
-Kia ora, world from 1.1.0!
-```
-
-Optionally, run the Rust test suite:
-
-```console
-$ cd ../hippo-client-rust
-$ cargo test
-```
-
-Open http://localhost:32770 again. You should notice that the application's
-version number changed.
-
-```console
-$ curl localhost:32770
-Bonjour from la belle version 1.1.1
-```
+Then, open https://localhost:5001 to view the browser.
 
 ## Testing
 
@@ -98,7 +69,7 @@ dotnet ef migrations add <name> --context SqliteDataContext --output-dir Migrati
 ASPNETCORE_ENVIRONMENT=Production dotnet ef migrations add <name> --context PostgresDataContext --output-dir Migrations/Postgres
 ```
 
-Sometimes manual fixups are required:
+Sometimes manual fix-ups are required:
 
 * **SQLite:** EF generates `"now()"` for database-generated columns. This doesn't exist. Change
   it to `"datetime('now')"` in both the migration and the designer.
