@@ -73,14 +73,26 @@ Hippo also includes a built in implementation of WAGI called [WAGI-dotnet](https
 
 ## Boot Hippo
 
-Download the [latest release](https://github.com/deislabs/hippo) of Hippo.
-Extract the project and move it somewhere sensible.
+This guide explains how to set up your environment for running Hippo from source.
 
-```console
-$ mv hippo /usr/local/hippo
-```
+Hippo is a .NET web application, built with the [Model-View-Controller](https://docs.microsoft.com/en-us/aspnet/core/tutorials/first-mvc-app/start-mvc?view=aspnetcore-5.0&tabs=visual-studio) (MVC) approach.
 
-Restore Hippo's dependencies with
+The front-end uses the Bootstrap design framework, which (along with some other packages) is managed via [npm](https://www.npmjs.com/) and [gulp](https://gulpjs.com/).
+
+Clone the [repository on GitHub](https://github.com/deislabs/hippo).
+
+### System Requirements
+
+Install the following development tools:
+
+- [.NET 5](https://dot.net/)
+- [Node.js](https://nodejs.org/en/download/)
+- [npm](https://www.npmjs.com/get-npm)
+- [WAGI](https://github.com/deislabs/wagi)
+
+### Building
+
+To build the project, run:
 
 ```console
 $ dotnet restore
