@@ -1,6 +1,6 @@
 ---
 title: What's next?
-description: Pointers on where to go after finishing the quickstart.
+description: Pointers on where to go after finishing the quickstart
 type: docs
 weight: 5
 ---
