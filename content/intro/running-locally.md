@@ -67,8 +67,7 @@ $ bindle --server http://localhost:8080/v1 search
 
 ## Boot Hippo
 
-This guide explains how to set up your environment for running Hippo from
-source.
+Next, we will compile Hippo from source.
 
 ### Prerequisites
 
