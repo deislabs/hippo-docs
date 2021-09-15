@@ -1,6 +1,6 @@
 ---
 title: Quickstart
-description: Get started with Hippo in three easy steps
+description: Get started with Hippo in two easy steps
 type: docs
 weight: 1
 ---
