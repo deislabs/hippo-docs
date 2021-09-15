@@ -5,7 +5,7 @@ type: docs
 weight: 2
 ---
 
-In this section, we will run Hippo focus on three steps:
+Running Hippo on your machine requires three steps:
 
 1. Install WAGI
 1. Boot Bindle
