@@ -5,6 +5,24 @@ type: docs
 weight: 1
 ---
 
+We built Hippo to help with two things.
+
+First, we want to make it simple to run applications and services compiled to
+WebAssembly. When we make it easy to deploy and test out our ideas, the
+WebAssembly community learns how to best run WebAssembly applications in
+production. We also make it easier for newcomers to get going. **Hippo is about
+growing WebAssembly adoption.**
+
+Second, we want to make it easier for teams to manage their application release
+life cycle. Hippo introduces a concept called "Channels" that eases the process
+of collaborating on new ideas by automatically deploying your releases based on
+their version number. Want to test your idea in a staging environment? Create a
+new "Staging" channel and watch Hippo deploy your development builds live.
+**Hippo helps promote collaboration.**
+
+Hippo is a powerful platform. We want to make it easy to manage the apps and
+services you deploy.
+
 Get started with Hippo in two easy steps.
 
 1. Boot Hippo
