@@ -1,19 +1,19 @@
 ---
 title: Release Checklist
-description: Release checklist for the Hippo project.
+description: Release checklist for the Hippo project
 type: docs
 ---
 
-> If your experience deviates from this document, please document the changes to
-> keep it up-to-date.
+> If your experience deviates from this document, please document the changes
+> to keep it up-to-date.
 
 This guide will guide you (redundancy added for purposes of punnery) on your
 journey to release a new version of Hippo.
 
-All releases will be of the form `vX.Y.Z` where `X` is the major version number,
-`Y` is the minor version number and `Z` is the patch release number. This
-project strictly follows [semantic versioning](https://semver.org/) so following
-this step is critical.
+All releases will be of the form `vX.Y.Z` where `X` is the major version
+number, `Y` is the minor version number and `Z` is the patch release number.
+This project strictly follows [semantic versioning](https://semver.org/) so
+following this step is critical.
 
 It is important to note that this document assumes that the git remote in your
 repository that corresponds to <https://github.com/deislabs/hippo> is named
@@ -24,8 +24,8 @@ local environment accordingly.
 If you are not sure what your upstream remote is named, use a command like `git
 remote -v` to find out.
 
-If you don't have an upstream remote, you can add one easily using the following
-command:
+If you don't have an upstream remote, you can add one easily using the
+following command:
 
 ```console
 git remote add upstream git@github.com:deislabs/hippo
@@ -101,7 +101,7 @@ is usually sufficient. For patch releases, do the same, but make note of the
 symptoms causing the original issue, who may be affected, and how the patch
 mitigates the issue.
 
-it should look like this:
+It should look like this:
 
 ```markdown
 ## Hippo vX.Y.Z
@@ -130,8 +130,8 @@ Download Hippo vX.Y.Z:
 - [hippo-vX.Y.Z.tar.gz](https://hippo.blob.core.windows.net/releases/hippo-vX.Y.Z.tar.gz)
 ```
 
-Feel free to bring in your own personality into the release notes; it's nice for
-people to think we're not all robots. :)
+Feel free to bring in your own personality into the release notes; it's nice
+for people to think we're not all robots. :)
 
 Double check the URLs are correct. Once finished, go into GitHub and edit the
 release notes for the tagged release with the notes written here.
@@ -199,13 +199,13 @@ git push upstream $RELEASE_NAME
 ```
 
 It is usually more beneficial to the end-user if the release notes are
-hand-written by a human being/marketing team/dog, so we'll go ahead and write up
-the release notes.
+hand-written by a human being/marketing team/dog, so we'll go ahead and write
+up the release notes.
 
-For patch releases, make note of the symptoms causing the original issue(s), who
-may be affected, and how the patch(es) mitigate the issue(s).
+For patch releases, make note of the symptoms causing the original issue(s),
+who may be affected, and how the patch(es) mitigate the issue(s).
 
-it should look like this:
+It should look like this:
 
 ```markdown
 ## Hippo vX.Y.Z

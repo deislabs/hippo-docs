@@ -1,6 +1,6 @@
 ---
 title: Code of Conduct
-description: Understand the Code of Conduct for the Hippo project.
+description: Understand the Code of Conduct for the Hippo project
 type: docs
 ---
 
