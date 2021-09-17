@@ -52,7 +52,7 @@ $ mv bindle bindle-server /usr/local/bin/
 To start the server, simply run 
 
 ```console
-$ bindle-server --insecure
+$ bindle-server --unauthenticated
 ```
 
 If you would like to see the available options, use the `--help` command.
