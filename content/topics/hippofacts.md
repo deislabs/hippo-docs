@@ -46,7 +46,7 @@ Handlers define endpoints for your application and the WebAssembly module that s
 - **route**: The request path. It should start a leading forward slash `/`.
   - If you want to tell a handler to support all _sub-paths_, you can add the `/...` suffix to the route. For example, `/hello/...` will match `/hello/world` and `/hello/wasm/world`.
 - **name**: Relative path to the WebAssembly module (`*.wasm` file) that should handle the request.
-- **files**": OPTIONAL. A list of relative file paths of static files that should be deployed with the WebAssembly module. These files are available to the module when it is serving requests.
+- **files**: OPTIONAL. A list of relative file paths of static files that should be deployed with the WebAssembly module. These files are available to the module when it is serving requests.
 
 [TOML]: https://toml.io/
 [configure]: {{< relref "configuration.md" >}}
