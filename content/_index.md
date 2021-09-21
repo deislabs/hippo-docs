@@ -11,13 +11,13 @@ Hippo includes capabilities for building and deploying applications from
 source, simple application configuration, automatically deploying and rolling
 back releases, managing domain names, providing seamless edge routing, log
 aggregation, and sharing applications with other teams. All of this is exposed
-through beautiful web interface and simple-to-use developer tooling.
+through a beautiful web interface and simple-to-use developer tooling.
 
 Under the hood, Hippo takes advantage of several modern cloud-native tools like
 WebAssembly to provide a safe, secure, sandboxed environment to compile,
 deploy, run, and manage applications.
 
-Here at DeisLabs we are cooking up a better ways to develop and run WebAssembly
+Here at DeisLabs we are cooking up better ways to develop and run WebAssembly
 workloads. Not familiar with WebAssembly? Take a quick tour of [WebAssembly in
 a Hurry]({{< relref "topics/webassembly.md" >}}) to get up to speed.
 
@@ -40,7 +40,7 @@ steps involved in addressing key problems and use-cases. They are more advanced
 than tutorials and assume some knowledge of how Hippo works.
 
 The [Developer Guides]({{< relref "developers" >}}) help you get started
-devloping code for the Hippo project.
+developing code for the Hippo project.
 
 # Project Status
 
