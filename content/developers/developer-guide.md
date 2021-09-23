@@ -14,14 +14,42 @@ The front-end uses the Bootstrap design framework, which (along with some other
 packages) is managed via [npm](https://www.npmjs.com/) and
 [gulp](https://gulpjs.com/).
 
-## System Requirements
+## Setup
 
-Install the following development tools:
+To get started either install the prerequisite tools locally or use a containerized environment.
+
+### 1. Install locally
+
+Install the following development tools and then clone the repository.:
 
 - [.NET 5](https://dot.net/)
 - [Node.js](https://nodejs.org/en/download/)
 - [npm](https://www.npmjs.com/get-npm)
 - [WAGI](https://github.com/deislabs/wagi)
+
+### 2. Use Visual Studio Code Remote Containers
+
+Alternatively development and testing can be done in a remote container using the [Visual Studio Code Remote Containers](https://code.visualstudio.com/docs/remote-containers) extension.
+
+Using this approach, you can run the development inside a container without installing anything locally, other than the prerequisites for [Visual Studio Code Remote Containers](https://code.visualstudio.com/docs/remote/containers#_getting-started).
+
+1. Clone the Hippo repository locally. 
+1. Start VS Code
+1. Run the **`Remote-Containers: Open Folder in Container...`** command and select the local folder.
+
+You can also use the [devcontainer cli](https://code.visualstudio.com/docs/remote/devcontainer-cli) to open Visual Studio Code and connect to the container.
+
+```console
+devcontainer open hippo
+```
+
+### 3. Use GitHub Codespaces
+
+If you have access to [GitHub Codespaces](https://github.com/features/codespaces) then you can fork the Hippo repository and create a codespace.:
+
+Navigate to the main page of the newly forked repository. Under the repository name, use the  Code drop-down menu, and in the Codespaces tab, click  New codespace:
+
+![New Codespace](/images/codespace.png)
 
 ## Building
 
