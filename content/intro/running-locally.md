@@ -91,7 +91,7 @@ To build the project, run:
 
 ```console
 $ git clone https://github.com/deislabs/hippo
-$ cd hippo/Hippo
+$ cd hippo/src/Hippo
 $ dotnet restore
 $ npm run build
 ```
