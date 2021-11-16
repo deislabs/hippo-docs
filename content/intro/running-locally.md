@@ -75,12 +75,12 @@ Install the following to compile Hippo from source:
 
 - [Git](https://git-scm.com/)
 - [Node.js](https://nodejs.org/)
-- [.NET 5](https://dot.net/)
+- [.NET 6](https://dotnet.microsoft.com/download/dotnet/6.0)
 
 ### Building
 
 Hippo is a .NET web application, built with the
-[Model-View-Controller](https://docs.microsoft.com/en-us/aspnet/core/tutorials/first-mvc-app/start-mvc?view=aspnetcore-5.0&tabs=visual-studio)
+[Model-View-Controller](https://docs.microsoft.com/en-us/aspnet/core/tutorials/first-mvc-app/start-mvc?view=aspnetcore-6.0&tabs=visual-studio)
 (MVC) approach.
 
 The front-end uses the Bootstrap design framework, which (along with some other
