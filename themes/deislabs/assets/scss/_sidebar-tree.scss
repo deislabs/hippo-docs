@@ -31,7 +31,7 @@
 
         @include media-breakpoint-up(md) {
             & > ul {
-                padding-left: .5rem;
+                padding-left: 1.5rem;
             }
         }
 
@@ -85,7 +85,7 @@
 
     & > .td-sidebar-nav__section {
         padding-top: .5rem;
-        padding-left: 1.5rem;
+        padding-left: 1rem;
     }
 }
 
