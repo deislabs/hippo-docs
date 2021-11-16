@@ -9,7 +9,7 @@ Let's take a quick tour of WebAssembly to get you familiar with foundations of H
 
 * [WebAssembly (Wasm)](#webassembly-wasm)
 * [WebAssembly System Interface (WASI)](#webassembly-system-interface-wasi)
-* [What workloads are suited for WebAssembly?](#what-workloads-are-suited-for-webassembly)
+* [What workloads are suited for WebAssembly?](#webassembly-gateway-interface-wagi)
 
 ### WebAssembly (Wasm)
 
