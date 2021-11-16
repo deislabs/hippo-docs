@@ -22,7 +22,7 @@ To get started either install the prerequisite tools locally or use a containeri
 
 Install the following development tools and then clone the repository.:
 
-- [.NET 5](https://dot.net/)
+- [.NET 6](https://dotnet.microsoft.com/download/dotnet/6.0)
 - [Node.js](https://nodejs.org/en/download/)
 - [npm](https://www.npmjs.com/get-npm)
 - [WAGI](https://github.com/deislabs/wagi)
