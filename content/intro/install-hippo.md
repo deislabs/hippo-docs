@@ -73,5 +73,5 @@ To verify Hippo was installed correctly, try running `hippo --version`:
 
 ```console
 $ hippo --version
-{{< hippo-version >}}
+hippo {{< hippo-cli-latest-version >}}
 ```
