@@ -1,11 +1,11 @@
 ---
 title: Deploy your First Application
-description: Deploy your first application to Hippo
+description: Deploy your first application using Hippo
 type: docs
-weight: 3
+weight: 4
 ---
 
-Now let's deploy your first application to Hippo!
+Now let's deploy your first application using Hippo!
 
 ## Prerequisites
 
@@ -17,21 +17,6 @@ Make sure to have the `wasm32-wasi` target available:
 ```console
 $ rustup target add wasm32-wasi
 ```
-
-## Install the Hippo CLI
-
-The Hippo command-line interface (CLI) lets you interact with Hippo. Use the
-CLI to create, configure, and manage applications.
-
-Install the latest `hippo` CLI by going to the
-[Release page](https://github.com/deislabs/hippo-cli/releases).
-
-After fetching the latest release, you should move it somewhere on your $PATH:
-
-```console
-$ mv hippo /usr/local/bin/
-```
-
 ## Install yo-wasm
 
 `yo-wasm` generates new projects to be used with Hippo.
