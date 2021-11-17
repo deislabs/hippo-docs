@@ -1,15 +1,15 @@
 ---
 title: Running Locally
-description: Boot Hippo on a laptop or PC
+description: Boot hippo-server on a laptop or PC
 type: docs
-weight: 2
+weight: 3
 ---
 
 Running Hippo on your machine requires three steps:
 
 1. Install WAGI
 1. Boot Bindle
-1. Boot Hippo
+1. Boot hippo-server
 
 ## Install WAGI
 
@@ -65,13 +65,13 @@ $ bindle --server http://localhost:8080/v1 search
 === Showing results 1 to 0 of 0 (limit: 50)
 ```
 
-## Boot Hippo
+## Boot hippo-server
 
-Next, we will compile Hippo from source.
+Next, we will compile hippo-server from source.
 
 ### Prerequisites
 
-Install the following to compile Hippo from source:
+Install the following to compile hippo-server from source:
 
 - [Git](https://git-scm.com/)
 - [Node.js](https://nodejs.org/)
@@ -79,7 +79,7 @@ Install the following to compile Hippo from source:
 
 ### Building
 
-Hippo is a .NET web application, built with the
+hippo-server is a .NET web application, built with the
 [Model-View-Controller](https://docs.microsoft.com/en-us/aspnet/core/tutorials/first-mvc-app/start-mvc?view=aspnetcore-6.0&tabs=visual-studio)
 (MVC) approach.
 
@@ -96,7 +96,7 @@ $ dotnet restore
 $ npm run build
 ```
 
-Then run Hippo, pointing at your local Bindle instance:
+Then run hippo-server, pointing at your local Bindle instance:
 
 ```console
 $ export BINDLE_URL=http://localhost:8080/v1
