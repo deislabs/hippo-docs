@@ -43,6 +43,7 @@ $fa-font-path: "../fonts" !default;
 @import "blocks/blocks";
 @import "section-index";
 @import "pageinfo";
+@import "admonitions";
 
 @if $td-enable-google-fonts {
   @import url($web-font-path);
