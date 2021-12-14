@@ -31,7 +31,7 @@ $ npm install -g generator-wasm
 
 ## Register an Account
 
-Open your web browser to <https://localhost:5001> and accept the self-signed
+Open your web browser to <https://localhost:5309> and accept the self-signed
 certificate to view the Hippo Web UI.
 
 ![Hippo Web UI](/images/hippo-ui-not-logged-in.png)
@@ -55,7 +55,7 @@ server is using a self-signed certificate.
 $ export USER=admin
 $ export HIPPO_USERNAME=admin
 $ export HIPPO_PASSWORD='Passw0rd!'
-$ export HIPPO_URL=https://localhost:5001
+$ export HIPPO_URL=https://localhost:5309
 $ export BINDLE_URL=http://localhost:8080/v1
 $ export GLOBAL_AGENT_FORCE_GLOBAL_AGENT=false
 ```
@@ -77,7 +77,7 @@ $ yo wasm
 ? What programming language will you write the module in? Rust
 ? Where do you plan to publish the module? Hippo
 ? Would you like to install build tools (Rust WASI target)? Yes
-? What is the URL of your Hippo service? https://localhost:5001
+? What is the URL of your Hippo service? https://localhost:5309
 ? What is the URL of your Hippo's Bindle server? http://localhost:8080/v1
 ? Would you like to create a new Hippo application for this project? Yes
 ? What storage ID (bindle name) would you like for your Hippo app? admin/helloworld
@@ -86,7 +86,7 @@ $ yo wasm
 ? Enter your Hippo password *********
 ```
 
-Open your web browser to <https://localhost:5001>, accept the self-signed
+Open your web browser to <https://localhost:5309>, accept the self-signed
 certificate, and log in. You should see an application named "helloworld" in
 the list.
 

@@ -57,32 +57,17 @@ To build the project, run:
 
 ```console
 $ dotnet restore
-$ cd Hippo
+$ cd src/Web
 $ npm run build
 ```
 
 ## Running
 
-If you're using the deislabs bindle test server, make sure to install the Let's
-Encrypt TLS certificates on your machine.
-
 ```console
-$ sudo su
-$ cd /usr/share/ca-certificates/
-$ mkdir letsencrypt.org
-$ cd $_
-$ curl -o isrgrootx1.crt https://letsencrypt.org/certs/isrgrootx1.pem
-$ curl -o lets-encrypt-r3.crt https://letsencrypt.org/certs/lets-encrypt-r3.pem
-$ dpkg-reconfigure ca-certificates
-$ update-ca-certificates
-```
-
-```console
-$ export BINDLE_URL=https://bindle.deislabs.io/v1
 $ dotnet run
 ```
 
-Then, open https://localhost:5001 to view the browser.
+Then, open https://localhost:5309 to view the browser.
 
 ## Testing
 
@@ -92,23 +77,11 @@ $ dotnet test
 
 ## Migrations
 
-We provide migrations for two databases: SQLite for local development,
-PostgreSQL for production use. If you change the model then you need to create
-migrations for both databases.  To do this:
-
 ```
-export ASPNETCORE_ENVIRONMENT=Production
-dotnet ef migrations add <name> --context SqliteDataContext --output-dir Migrations/Sqlite
-dotnet ef migrations add <name> --context PostgresDataContext --output-dir Migrations/Postgres
+dotnet ef migrations add <name> --project src/Infrastructure --startup-project src/Web --output-dir Data/Migrations
 ```
-
-Sometimes manual fix-ups are required:
-
-* **SQLite:** EF generates `"now()"` for database-generated columns. This
-  doesn't exist. Change it to `"datetime('now')"` in both the migration and the
-  designer.
 
 ## Backing out
 
 If you foul up your dev configuration beyond repair, or just want a clean
-start, delete `Hippo/hippo.db`.
+start, delete `src/Web/hippo.db`.
