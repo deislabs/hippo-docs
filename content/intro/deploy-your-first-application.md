@@ -31,16 +31,22 @@ $ npm install -g generator-wasm
 
 ## Register an Account
 
-Open your web browser to <https://localhost:5309> and accept the self-signed
-certificate to view the Hippo Web UI.
+Register an account using the Hippo CLI.
 
-![Hippo Web UI](/images/hippo-ui-not-logged-in.png)
+```console
+$ hippo auth register --danger-accept-invalid-certs
+Enter username: administrator
+Enter password: [hidden]
+Registered administrator
+```
 
-Click "Register" and create a new account. Use "admin" for the username, enter
-your email address, and use "Passw0rd!" for your password - we'll reference
-these later when logging in with the Hippo CLI.
+Then log in using your new account.
 
-![Registration page](/images/hippo-register-account.png)
+```console
+$ hippo auth login --danger-accept-invalid-certs --hippo-username administrator
+Enter Hippo password: [hidden]
+Logged in as administrator
+```
 
 ## Create an Application
 
@@ -112,10 +118,10 @@ $ cargo run
 To push your application to Bindle, use the `hippo` CLI.
 
 ```console
-$ hippo push -k .
+$ hippo push . -v production
 ```
 
-Open your web browser to <https://admin.helloworld.hippofactory.io:5003> and
+Open your web browser to <https://helloworld.hippofactory.io:5003> and
 accept the self-signed certificate. You should see "Hello, world!".
 
 ![Hello World!](/images/hello-world.png)
