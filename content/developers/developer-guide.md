@@ -12,7 +12,7 @@ Hippo is a .NET webapp, built with the
 
 The front-end uses the Bootstrap design framework, which (along with some other
 packages) is managed via [npm](https://www.npmjs.com/) and
-[gulp](https://gulpjs.com/).
+[webpack](https://webpack.js.org/).
 
 ## Setup
 
@@ -26,14 +26,15 @@ Install the following development tools and then clone the repository.:
 - [Node.js](https://nodejs.org/en/download/)
 - [npm](https://www.npmjs.com/get-npm)
 - [WAGI](https://github.com/deislabs/wagi)
+- [bindle](https://github.com/deislabs/bindle)
 
 ### 2. Use Visual Studio Code Remote Containers
 
-Alternatively development and testing can be done in a remote container using the [Visual Studio Code Remote Containers](https://code.visualstudio.com/docs/remote-containers) extension.
+Alternatively, development and testing can be done in a remote container using the [Visual Studio Code Remote Containers](https://code.visualstudio.com/docs/remote-containers) extension.
 
 Using this approach, you can run the development inside a container without installing anything locally, other than the prerequisites for [Visual Studio Code Remote Containers](https://code.visualstudio.com/docs/remote/containers#_getting-started).
 
-1. Clone the Hippo repository locally. 
+1. Clone the Hippo repository locally.
 1. Start VS Code
 1. Run the **`Remote-Containers: Open Folder in Container...`** command and select the local folder.
 
@@ -45,9 +46,9 @@ devcontainer open hippo
 
 ### 3. Use GitHub Codespaces
 
-If you have access to [GitHub Codespaces](https://github.com/features/codespaces) then you can fork the Hippo repository and create a codespace.:
+If you have access to [GitHub Codespaces](https://github.com/features/codespaces) then you can fork the Hippo repository and create a codespace.
 
-Navigate to the main page of the newly forked repository. Under the repository name, use the  Code drop-down menu, and in the Codespaces tab, click  New codespace:
+Navigate to the main page of the newly forked repository. Under the repository name, use the Code drop-down menu, and in the Codespaces tab, click New codespace:
 
 ![New Codespace](/images/codespace.png)
 
@@ -56,14 +57,13 @@ Navigate to the main page of the newly forked repository. Under the repository n
 To build the project, run:
 
 ```console
-$ dotnet restore
-$ cd src/Web
-$ npm run build
+$ dotnet build
 ```
 
 ## Running
 
 ```console
+$ cd src/Web
 $ dotnet run
 ```
 
