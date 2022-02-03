@@ -78,7 +78,8 @@ $ dotnet test
 ## Migrations
 
 ```
-dotnet ef migrations add <name> --project src/Infrastructure --startup-project src/Web --output-dir Data/Migrations
+dotnet ef migrations add <name> --project src/Infrastructure --startup-project src/Web --context PostgresqlDbContext
+dotnet ef migrations add <name> --project src/Infrastructure --startup-project src/Web --context SqliteDbContext
 ```
 
 ## Backing out
