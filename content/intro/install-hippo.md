@@ -64,7 +64,7 @@ $ cd hippo-cli
 Then, compile and install Hippo:
 
 ```console
-$ cargo install
+$ cargo install --path .
 ```
 
 ## Verify the Installation
