@@ -86,3 +86,18 @@ dotnet ef migrations add <name> --project src/Infrastructure --startup-project s
 
 If you foul up your dev configuration beyond repair, or just want a clean
 start, delete `src/Web/hippo.db`.
+
+## Releasing
+
+To release a new version of Hippo, do the following:
+
+1. Edit the following files, updating the `<Version>` property:
+   a. src/Application/Application.csproj
+   b. src/Core/Core.csproj
+   c. src/Infrastructure/Infrastructure.csproj
+   d. src/Web/Web.csproj
+2. Commit those changes and `git push upstream`
+2. Run `git tag --sign vX.Y.Z`
+3. Run `git push upstream vX.Y.Z`
+4. Run `dotnet pack --configuration Release`
+5. Go to <https://www.nuget.org/packages/manage/upload>, uploading the .nupkg files
