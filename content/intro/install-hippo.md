@@ -5,16 +5,17 @@ type: docs
 weight: 2
 ---
 
-Hippo is available as a pre-compiled binary for several operating systems. You
-can also compile Hippo from source.
+The Hippo CLI is available as a pre-compiled binary for several operating
+systems. You can also compile Hippo from source.
 
 ## Manual Installation
 
 You can download a pre-compiled binary and run it on your PC or laptop. You can
 also verify the binary using the available checksums and attached PGP
-signatures.
+signatures. The releases are [available on
+GitHub](https://github.com/deislabs/hippo-cli/releases).
 
-After downloading Hippo, unzip the package. Make sure that the `hippo` binary
+After downloading the Hippo CLI, unzip the package. Make sure that the `hippo` binary
 is available somewhere on your `$PATH` before continuing with the other guides.
 
 You can check the locations available on your path by running this command:
