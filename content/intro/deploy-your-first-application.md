@@ -17,18 +17,6 @@ Make sure to have the `wasm32-wasi` target available:
 ```console
 $ rustup target add wasm32-wasi
 ```
-## Install yo-wasm
-
-`yo-wasm` generates new projects to be used with Hippo.
-
-First, install [Yeoman](http://yeoman.io/) using `npm`. Then install
-`generator-wasm` using `npm`.
-
-```console
-$ npm install -g yo
-$ npm install -g generator-wasm
-```
-
 ## Register an Account
 
 Register an account using the Hippo CLI.
@@ -43,76 +31,54 @@ Registered administrator
 Then log in using your new account.
 
 ```console
-$ hippo auth login --danger-accept-invalid-certs --hippo-username administrator
-Enter Hippo password: [hidden]
+$ hippo auth login --danger-accept-invalid-certs
+Enter username: administrator
+Enter password: [hidden]
 Logged in as administrator
+```
+
+Make sure to log in to Bindle.
+
+```console
+$ hippo bindle login --danger-accept-invalid-certs
+Configuration written to ~/.config/hippo/bindle.json
 ```
 
 ## Create an Application
 
-Now go back to your terminal and use `yo wasm` to generate your application. To
-auto-populate some fields, you can set up a few environment variables ahead of
-time.
-
-Note: We need to disable strict SSL certificate checking because our Hippo
-server is using a self-signed certificate.
+Run the following commands to create a new application:
 
 ```console
-$ export USER=admin
-$ export HIPPO_USERNAME=admin
-$ export HIPPO_PASSWORD='Passw0rd!'
-$ export HIPPO_URL=https://localhost:5309
-$ export BINDLE_URL=http://localhost:8080/v1
-$ export GLOBAL_AGENT_FORCE_GLOBAL_AGENT=false
+$ hippo app add helloworld helloworld
+Added App helloworld (ID = '1f077bb2-a021-4d2e-9b30-8067f7084f95')
+IMPORTANT: save this App ID for later - you will need it to update and/or delete the App (for now)
+$ hippo channel add latest 1f077bb2-a021-4d2e-9b30-8067f7084f95
+Added Channel latest (ID = 'cad1a102-1eeb-4aec-9508-6c27c5204051')
+IMPORTANT: save this Channel ID for later - you will need it to update and/or delete the Channel (for now)
 ```
 
-Create a new directory for your application.
+At this point, you created a new application called `helloworld`, but it is not
+serving any content... Yet. You need to compile your application to WebAssembly
+and upload it to the Bindle server, and then push it to the Bindle server. Hippo
+will discover the new version and deploy it.
+
+Hippo's source code contains several example applications. We'll use the
+helloworld example for this demonstration.
 
 ```console
-$ mkdir helloworld
-$ cd $_
+$ cd hippo/examples/helloworld
 ```
 
-Run `yo wasm`, answering the questions to generate your application.
+Compile the application to WebAssembly:
 
 ```console
-$ yo wasm
-? What is the name of the WASM module? helloworld
-? What type of application is the module? Web service or application using WAGI
-? What is the name of the author? Matthew Fisher
-? What programming language will you write the module in? Rust
-? Where do you plan to publish the module? Hippo
-? Would you like to install build tools (Rust WASI target)? Yes
-? What is the URL of your Hippo service? https://localhost:5309
-? What is the URL of your Hippo's Bindle server? http://localhost:8080/v1
-? Would you like to create a new Hippo application for this project? Yes
-? What storage ID (bindle name) would you like for your Hippo app? admin/helloworld
-? What domain name would you like for your Hippo app? helloworld.hippofactory.io
-? Enter your Hippo user name (will become app owner) admin
-? Enter your Hippo password *********
-```
-
-Open your web browser to <https://localhost:5309>, accept the self-signed
-certificate, and log in. You should see an application named "helloworld" in
-the list.
-
-![Applications page with "helloworld" app](/images/hippo-applications-with-helloworld.png)
-
-At this point, your application is registered with Hippo, but it is not yet
-being served. You need to first compile the application, package it into a
-bindle, and then push it to the Bindle server. Then Hippo will discover the new
-version and deploy it.
-
-Compile your application to WebAssembly with WASI support.
-
-```console
-$ cargo build --release --target wasm32-wasi
+$ cargo build --release
 ```
 
 Run your application locally to try it out. It should print "Hello, world!"
 
 ```console
-$ cargo run
+$ wasmtime target/wasm32-wasi/release/helloworld.wasm
 ```
 
 To push your application to Bindle, use the `hippo` CLI.

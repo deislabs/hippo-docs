@@ -14,7 +14,7 @@ Running Hippo on your machine requires three steps:
 ## Install WAGI
 
 Hippo deploys applications using handlers following a Common Gateway Interface
-like approach called WebAssembly Gateway Interface (WAGI). 
+like approach called WebAssembly Gateway Interface (WAGI).
 
 An incoming client HTTP request  is sent to the handler, which launches the
 application as a WebAssembly module and passes the HTTP request to it using the
@@ -49,7 +49,7 @@ revisions of your application.
 $ mv bindle bindle-server /usr/local/bin/
 ```
 
-To start the server, simply run 
+To start the server, simply run
 
 ```console
 $ bindle-server --unauthenticated
@@ -79,21 +79,18 @@ Install the following to compile hippo-server from source:
 
 ### Building
 
-hippo-server is a .NET web application, built with the
-[Model-View-Controller](https://docs.microsoft.com/en-us/aspnet/core/tutorials/first-mvc-app/start-mvc?view=aspnetcore-6.0&tabs=visual-studio)
-(MVC) approach.
-
-The front-end uses the Bootstrap design framework, which (along with some other
-packages) is managed via [npm](https://www.npmjs.com/) and
-[gulp](https://gulpjs.com/).
+hippo-server is written in C# using the
+[ASP.NET](https://dotnet.microsoft.com/en-us/apps/aspnet) framework. The
+Web UI uses Angular as the front-end web framework and Bulma as the design
+framework, which (along with some other packages) is managed via
+[npm](https://www.npmjs.com/).
 
 To build the project, run:
 
 ```console
 $ git clone https://github.com/deislabs/hippo
-$ cd hippo/src/Hippo
-$ dotnet restore
-$ npm run build
+$ cd hippo/src/Web
+$ dotnet build
 ```
 
 Then run hippo-server, pointing at your local Bindle instance:
