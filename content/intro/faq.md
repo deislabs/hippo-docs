@@ -69,6 +69,5 @@ runtime powered by WebAssembly. As a result, Hippo is best suited for
 web applications and micro-services, however in the future we do hope to expand
 to further use cases once [WASI][wasi] matures.
 
-
 [wasi]: {{< relref "webassembly.md#webassembly-system-interface-wasi" >}}
 [wasm]: {{< relref "webassembly.md" >}}

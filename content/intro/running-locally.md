@@ -7,26 +7,20 @@ weight: 3
 
 Running Hippo on your machine requires three steps:
 
-1. Install WAGI
+1. Install Spin
 1. Boot Bindle
 1. Boot hippo-server
 
-## Install WAGI
+## Install Spin
 
-Hippo deploys applications using handlers following a Common Gateway Interface
-like approach called WebAssembly Gateway Interface (WAGI).
+Hippo deploys applications using Spin, a framework for building and running
+event-driven microservice applications with WebAssembly components.
 
-An incoming client HTTP request  is sent to the handler, which launches the
-application as a WebAssembly module and passes the HTTP request to it using the
-WAGI protocol. The output of the application - usually in the form of HTML - is
-then returned by the WebAssembly module, again using WAGI protocol, and the
-handler relays the output back to the client as an HTTP response.
-
-Download the [latest release](https://github.com/deislabs/wagi) of WAGI.
-Extract the WAGI binary and move it to a directory that is in your $PATH.
+Download the [latest release](https://github.com/fermyon/spin/releases) of Spin.
+Extract the Spin binary and move it to a directory that is in your $PATH.
 
 ```console
-$ mv wagi /usr/local/bin/
+$ mv spin /usr/local/bin/
 ```
 
 No further configuration is necessary.
