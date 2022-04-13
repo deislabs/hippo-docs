@@ -25,7 +25,7 @@ Install the following development tools and then clone the repository.:
 - [.NET 6](https://dotnet.microsoft.com/download/dotnet/6.0)
 - [Node.js](https://nodejs.org/en/download/)
 - [npm](https://www.npmjs.com/get-npm)
-- [WAGI](https://github.com/deislabs/wagi)
+- [Spin](https://github.com/fermyon/spin)
 - [bindle](https://github.com/deislabs/bindle)
 
 ### 2. Use Visual Studio Code Remote Containers
@@ -67,7 +67,7 @@ $ cd src/Web
 $ dotnet run
 ```
 
-Then, open https://localhost:5309 to view the browser.
+Then, open <https://localhost:5309> to view the browser.
 
 ## Testing
 
@@ -77,9 +77,9 @@ $ dotnet test
 
 ## Migrations
 
-```
-dotnet ef migrations add <name> --project src/Infrastructure --startup-project src/Web --context PostgresqlDbContext
-dotnet ef migrations add <name> --project src/Infrastructure --startup-project src/Web --context SqliteDbContext
+```console
+$ dotnet ef migrations add <name> --project src/Infrastructure --startup-project src/Web --context PostgresqlDbContext
+$ dotnet ef migrations add <name> --project src/Infrastructure --startup-project src/Web --context SqliteDbContext
 ```
 
 ## Backing out
@@ -96,8 +96,10 @@ To release a new version of Hippo, do the following:
    b. src/Core/Core.csproj
    c. src/Infrastructure/Infrastructure.csproj
    d. src/Web/Web.csproj
-2. Commit those changes and `git push upstream`
-2. Run `git tag --sign vX.Y.Z`
-3. Run `git push upstream vX.Y.Z`
-4. Run `dotnet pack --configuration Release`
-5. Go to <https://www.nuget.org/packages/manage/upload>, uploading the .nupkg files
+   e. .devcontainer/devcontainer.json
+   f. .github/workflows/build-devcontainer.yml
+1. Commit those changes and `git push upstream`
+1. Run `git tag --sign vX.Y.Z`
+1. Run `git push upstream vX.Y.Z`
+1. Run `dotnet pack --configuration Release`
+1. Go to <https://www.nuget.org/packages/manage/upload>, uploading the .nupkg files

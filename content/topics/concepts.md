@@ -16,13 +16,15 @@ The maintainers of the Hippo project have been directly involved in the developm
 
 Hippo is designed to run applications that adhere to the Twelve-Factor App methodology and best practices.
 
-## Common Gateway Interface
+## HTTP handlers and WebAssembly
 
-At the current writing of this document, the WebAssembly specification does not support attaching, creating, or writing to a socket. Additionally, WebAssembly modules are single-threaded. As a result, WebAssembly modules cannot initiate connections to other services or run as a standalone web server without blocking the main thread.
+An important workload in event-driven environments is represented by HTTP applications, and Hippo has built-in support for creating and running HTTP components.
 
-To work around this limitation, Hippo deploys applications as HTTP handlers following the [Common Gateway Interface](https://en.wikipedia.org/wiki/Common_Gateway_Interface) using a project called [WAGI](https://github.com/deislabs/wagi). An incoming HTTP request is sent to Hippo, which redirects the request to WAGI. WAGI then launches the application as a WebAssembly module, passing the HTTP request to the module. The output of the application - usually in the form of HTML - is returned to WAGI, and WAGI relays the output back to the browser as an HTTP response.
+At the current writing of this document, WebAssembly modules are single-threaded. As a result, WebAssembly modules cannot run as a standalone web server without blocking the main thread.
 
-in the future as more capabilities are provided to the WebAssembly runtime, we will re-evaluate this architecture and provide more capabilities to developers.
+To work around this limitation, Hippo deploys applications as HTTP handlers using Spin. The HTTP trigger in Spin is a web server. It listens for incoming requests and based on the application configuration, it routes them to an executor which instantiates the appropriate component, executes its entry point function, then returns an HTTP response.
+
+As more capabilities are provided to the WebAssembly runtime, we will re-evaluate this architecture and provide more capabilities to developers.
 
 ## Bindle
 
@@ -39,7 +41,7 @@ Parcels can be any arbitrary data such as:
 
 A bindle for a website could look like this:
 
-```
+```text
 my-web-app 1.2.3
   |- index.html
   |- style.css
