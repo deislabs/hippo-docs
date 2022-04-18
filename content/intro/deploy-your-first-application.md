@@ -109,7 +109,7 @@ $ cargo build --target wasm32-wasi --release
 Now that we configured the application and built our component, we can _spin up_ the application (pun intended):
 
 ```console
-$ spin up
+$ spin up --file spin.toml
 Serving HTTP on address http://127.0.0.1:3000
 ```
 
@@ -126,7 +126,7 @@ Hello, Fermyon!
 To push your application to Bindle, use `spin bindle push`:
 
 ```console
-$ spin bindle push --bindle-server http://localhost:8080/v1
+$ spin bindle push --bindle-server http://localhost:8080/v1 --file spin.toml 
 pushed: spin-hello-world/1.0.0
 ```
 
