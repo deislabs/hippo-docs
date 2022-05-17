@@ -11,7 +11,7 @@ Now let's deploy your first application using Hippo!
 
 We need a few tools for this tutorial:
 
-1. The [Hippo CLI](https://github.com/deislabs/hippo)
+1. The [Hippo CLI](https://github.com/deislabs/hippo-cli)
 1. The [Spin CLI](https://spin.fermyon.dev/)
 1. The [Rust programming language](https://www.rust-lang.org/)
 
@@ -74,10 +74,11 @@ with a single component called `hello`. Spin will execute the
 guide](https://spin.fermyon.dev/configuration) for a detailed guide on the Spin
 application configuration.
 
-Now let’s have a look at the `hello` component (`examples/http-rust/src/lib.rs`).
-Below is the complete source code for a Spin HTTP component written in Rust — a
-regular Rust function that takes an HTTP request as a parameter and returns an
-HTTP response, and it is annotated with the `http_component` macro:
+Now let’s have a look at the `hello` component
+(`examples/http-rust/src/lib.rs`). Below is the complete source code for a Spin
+HTTP component written in Rust — a regular Rust function that takes an HTTP
+request as a parameter and returns an HTTP response, and it is annotated with
+the `http_component` macro:
 
 ```rust
 use anyhow::Result;
@@ -106,7 +107,8 @@ $ cargo build --target wasm32-wasi --release
     Finished release [optimized] target(s) in 0.01s
 ```
 
-Now that we configured the application and built our component, we can _spin up_ the application (pun intended):
+Now that we configured the application and built our component, we can _spin
+up_ the application (pun intended):
 
 ```console
 $ spin up --file spin.toml
@@ -138,23 +140,12 @@ Register an account using the Hippo CLI.
 
 ```console
 $ hippo register -k
-Enter username: administrator
-Enter password: [hidden]
 Registered administrator
 ```
 
-Then log in using your new account.
-
-```console
-$ hippo login -k
-Enter username: administrator
-Enter password: [hidden]
-Logged in as administrator
-```
-
-Create a new application using the Hippo CLI. The second argument must match the
-bindle ID we used earlier with `spin bindle push`, but the first argument can be
-anything we'd like.
+Create a new application. The second argument must match the bindle ID we used
+earlier with `spin bindle push`, but the first argument can be anything we'd
+like.
 
 ```console
 $ hippo app add helloworld spin-hello-world
@@ -162,21 +153,8 @@ Added App helloworld (ID = 'e4a30d14-4536-4f4a-81d5-80e961e7710c')
 IMPORTANT: save this App ID for later - you will need it to update and/or delete the App
 ```
 
-```console
-$ hippo channel add latest e4a30d14-4536-4f4a-81d5-80e961e7710c
-Added Channel latest (ID = '685ff7d8-7eef-456f-ad5a-4c5c39975588')
-IMPORTANT: save this Channel ID for later - you will need it to update and/or delete the Channel
-```
-
-If not specified, Hippo deploys the latest revision. This can be changed by
-either providing a different `--range-rule`, or by specifying a `--revision-id`.
-In this case though, we'll be deploying the latest version.
-
 By default, Hippo will serve the application to a domain URL with the address
-`<channel_name>.<app_name>.<platform_domain>`. In this case,
-`latest.helloworld.hippo.localdomain`. If you want to change this domain, use
-the --domain flag.
-
+`.<app_name>.<platform_domain>`. In this case, `helloworld.hippo.localdomain`.
 If you want your browser to resolve this hostname to Hippo, you'll want to add
 it to your `/etc/hosts` file (or `c:\Windows\System32\Drivers\etc\hosts` for
 Windows users):
@@ -187,23 +165,10 @@ $ cat /etc/hosts
 ::1		localhost
 
 
-127.0.0.1   latest.helloworld.hippo.localdomain
+127.0.0.1   helloworld.hippo.localdomain
 ```
 
-Now let's register the bindle ID with this application.
-
-```console
-$ hippo revision add spin-hello-world 1.0.0
-Added Revision 1.0.0
-```
-
-If any applications use `spin-hello-world` as their storage ID, all their
-channels will re-evaluate whether they need to update the job scheduler. In this
-case, we only have one channel, but in the future, we could have multiple
-channels re-evaluating what revision they consider "latest" based on their own
-use of the `--range-rule` flag. More on that in future tutorials.
-
-Open your web browser to <https://latest.helloworld.hippo.localdomain:5309/hello> and
+Open your web browser to <https://helloworld.hippo.localdomain:5309/hello> and
 accept the self-signed certificate. You should see "Hello, Fermyon!".
 
 ## Summary
