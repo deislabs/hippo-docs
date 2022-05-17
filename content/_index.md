@@ -17,10 +17,6 @@ Under the hood, Hippo takes advantage of several modern cloud-native tools like
 WebAssembly to provide a safe, secure, sandboxed environment to compile,
 deploy, run, and manage applications.
 
-Here at DeisLabs we are cooking up better ways to develop and run WebAssembly
-workloads. Not familiar with WebAssembly? Take a quick tour of [WebAssembly in
-a Hurry]({{< relref "topics/webassembly.md" >}}) to get up to speed.
-
 Our goal is to provide a platform for developers to take advantage of modern
 technologies without having to dive into the technical details of hosting.
 
@@ -48,7 +44,13 @@ Hippo is experimental code. It is not considered production-grade by its
 developers, nor is it "supported" software. However, it is ready for you to try
 out and provide feedback.
 
+# About the Team
+
 DeisLabs is experimenting with many WebAssembly technologies right now. This is
 one of a multitude of projects (including [Krustlet, the WebAssembly
 Kubelet](https://github.com/deislabs/krustlet)) designed to test the limits of
 WebAssembly as a cloud-based runtime.
+
+Here at DeisLabs we are cooking up better ways to develop and run WebAssembly
+workloads. Not familiar with WebAssembly? Take a quick tour of [WebAssembly in
+a Hurry]({{< relref "topics/webassembly.md" >}}) to get up to speed.

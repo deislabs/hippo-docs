@@ -15,8 +15,9 @@ also verify the binary using the available checksums and attached PGP
 signatures. The releases are [available on
 GitHub](https://github.com/deislabs/hippo-cli/releases).
 
-After downloading the Hippo CLI, unzip the package. Make sure that the `hippo` binary
-is available somewhere on your `$PATH` before continuing with the other guides.
+After downloading the Hippo CLI, unzip the package. Make sure that the `hippo`
+binary is available somewhere on your `$PATH` before continuing with the other
+guides.
 
 You can check the locations available on your path by running this command:
 

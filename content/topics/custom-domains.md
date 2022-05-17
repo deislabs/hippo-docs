@@ -5,11 +5,10 @@ type: docs
 ---
 
 By default, a Hippo app is available at a default domain which has the form of
-`{name of app}.hippo.test`. For example, an app named `myapp` can be reached
-at `myapp.hippo.test`.
+`{name of app}.hippo.localdomain`. For example, an app named `myapp` can be
+reached at `myapp.hippo.localdomain`.
 
-To make your app available at a different domain, you add a custom domain to it.
-
+To make your app available at a different domain, you can add a custom domain.
 You can add custom domains to any app.
 
 A short summary of steps to follow are:
@@ -27,42 +26,36 @@ A short summary of steps to follow are:
 After you add a domain, you need to point your DNS provider at the DNS target
 provided by Hippo.
 
-You usually configure a new CNAME record with your DNS provider to point it at
+You usually configure a new A record with your DNS provider to point it at
 Hippo.
 
-The following table shows common CNAME record patterns:
+The following table shows common A record patterns:
 
-| Record | Name    | Target                    |
-|--------|---------|---------------------------|
-| CNAME  | www     | hello-world.hippo.test    |
-| CNAME  | blog    | my-blog.hippo.test        |
-| CNAME  | staging | hello-world.hippo.test    |
+| Record | Name    | Target        |
+|------- |---------|---------------|
+| A      | www     | 192.168.1.100 |
+| A      | blog    | 192.168.1.100 |
+| A      | staging | 192.168.1.100 |
+
+You can also use a wildcard:
+
+| Record | Name    | Target        |
+|------- |---------|---------------|
+| A      | *       | 192.168.1.100 |
 
 Consult your DNS provider's documentation for specific instructions on creating
-CNAME records.
+A records.
 
 You can confirm that your DNS is configured correctly with the `host` command,
 assuming your DNS changes have propagated:
 
 ```
-$ host www.example.com
-www.example.com is an alias for hello-world.hippo.test.
-...
+$ host docs.hippofactory.dev
+docs.hippofactory.dev has address 172.67.129.47
+docs.hippofactory.dev has address 104.21.1.112
+docs.hippofactory.dev has IPv6 address 2606:4700:3036::ac43:812f
+docs.hippofactory.dev has IPv6 address 2606:4700:3033::6815:170
 ```
-
-## Configuring DNS for Root Domains
-
-Configuring your DNS provider for a root domain is similar to configuring a DNS
-provider for a subdomain. However, whereas with subdomains the type of record to
-configure is always a CNAME, with root domains the type of record depends on the
-DNS provider.
-
-Whichever provider you have, point the ALIAS/ANAME/CNAME entry for your root
-domain to the DNS Target, just as you would with a CNAME record:
-
-| Record          | Name | Target                    |
-|-----------------|------|---------------------------|
-| ALIAS or ANAME  | @    | hello-world.hippo.test    |
 
 ## Rules on Adding Domains
 
@@ -73,4 +66,4 @@ domains aren't claimed by multiple owners:
 1. A given domain can only be added to a single Hippo app. For example, if you
    add `www.example.com` to `hello-world`, you cannot add that domain to
    `goodbye-world` without removing the domain from `hello-world` first.
-1. Wildcard domains are unsupported at this time.
+1. Adding wildcard domains to applications are unsupported at this time.
