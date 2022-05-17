@@ -140,7 +140,18 @@ Register an account using the Hippo CLI.
 
 ```console
 $ hippo register -k
+Enter username: administrator
+Enter password: [hidden]
 Registered administrator
+```
+
+Then log in.
+
+```console
+$ hippo login -k
+Enter username: administrator
+Enter password: [hidden]
+Logged in as administrator
 ```
 
 Create a new application. The second argument must match the bindle ID we used
