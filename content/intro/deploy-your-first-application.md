@@ -165,22 +165,11 @@ IMPORTANT: save this App ID for later - you will need it to update and/or delete
 ```
 
 By default, Hippo will serve the application to a domain URL with the address
-`.<app_name>.<platform_domain>`. In this case, `helloworld.hippo.localdomain`.
-If you want your browser to resolve this hostname to Hippo, you'll want to add
-it to your `/etc/hosts` file (or `c:\Windows\System32\Drivers\etc\hosts` for
-Windows users):
-
-```console
-$ cat /etc/hosts
-127.0.0.1	localhost
-::1		localhost
-
-
-127.0.0.1   helloworld.hippo.localdomain
-```
-
-Open your web browser to <https://helloworld.hippo.localdomain:5309/hello> and
-accept the self-signed certificate. You should see "Hello, Fermyon!".
+`.<app_name>.<platform_domain>`. Because we deployed Hippo with the
+nomad-local-demo project, it gave us the domain
+`helloworld.local.fermyon.link`. Open your web browser to
+<https://helloworld.local.fermyon.link/hello> and accept the self-signed
+certificate. You should see "Hello, Fermyon!".
 
 ## Summary
 
