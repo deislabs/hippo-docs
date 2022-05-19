@@ -8,8 +8,7 @@ weight: 3
 Running Hippo on your machine requires three steps:
 
 1. Install Spin
-1. Boot Bindle
-1. Boot hippo-server
+1. Boot Hippo
 
 ## Install Spin
 
@@ -25,73 +24,39 @@ $ mv spin /usr/local/bin/
 
 No further configuration is necessary.
 
-## Boot Bindle
+## Boot Hippo
+
+Hippo relies on a number of services: Bindle, Nomad, and Traefik.
 
 Applications are bundled up as a _bindle_. Bindles are collected together in a
 [bindle server](https://github.com/deislabs/bindle) that you can search. Hippo
 uses `bindle` under the hood for storing and organizing applications.
 
-First, set up a local installation of
-[Bindle](https://github.com/deislabs/bindle). This is where Hippo will publish
-revisions of your application.
+Hippo deploys applications to Nomad, a simple and flexible scheduler and
+orchestrator for managing applications across a number of nodes.
 
-1. Download the [latest release](https://github.com/deislabs/bindle/releases)
-   of bindle. Extract the `bindle` and `bindle-server` binaries and move them
-   to a directory on your $PATH.
+Traefik is used to route incoming network traffic from the public internet to
+the correct application. It acts as an OSI Layer 7 load balancer, making
+routing decisions based on detailed information of the incoming request.
+
+To run the nomad-local-demo project, clone the project from GitHub:
 
 ```console
-$ mv bindle bindle-server /usr/local/bin/
+$ git clone https://github.com/fermyon/nomad-local-demo
+Cloning into 'nomad-local-demo'...
+remote: Enumerating objects: 187, done.
+remote: Counting objects: 100% (109/109), done.
+remote: Compressing objects: 100% (77/77), done.
+remote: Total 187 (delta 48), reused 82 (delta 29), pack-reused 78
+Receiving objects: 100% (187/187), 43.43 KiB | 694.00 KiB/s, done.
+Resolving deltas: 100% (72/72), done.
 ```
 
-To start the server, simply run
+Start consul, nomad, vault, traefik, bindle, and hippo by running
 
 ```console
-$ bindle-server --unauthenticated
-```
-
-If you would like to see the available options, use the `--help` command.
-
-By default, `bindle-server` listens on port 8080. You can verify it is running
-by issuing a request to Bindle:
-
-```console
-$ bindle --server http://localhost:8080/v1 search
-=== Showing results 1 to 0 of 0 (limit: 50)
-```
-
-## Boot hippo-server
-
-Next, we will compile hippo-server from source.
-
-### Prerequisites
-
-Install the following to compile hippo-server from source:
-
-- [Git](https://git-scm.com/)
-- [Node.js](https://nodejs.org/)
-- [.NET 6](https://dotnet.microsoft.com/download/dotnet/6.0)
-
-### Building
-
-hippo-server is written in C# using the
-[ASP.NET](https://dotnet.microsoft.com/en-us/apps/aspnet) framework. The
-Web UI uses Angular as the front-end web framework and Bulma as the design
-framework, which (along with some other packages) is managed via
-[npm](https://www.npmjs.com/).
-
-To build the project, run:
-
-```console
-$ git clone https://github.com/deislabs/hippo
-$ cd hippo/src/Web
-$ dotnet build
-```
-
-Then run hippo-server, pointing at your local Bindle instance:
-
-```console
-$ export BINDLE_URL=http://localhost:8080/v1
-$ dotnet run
+$ cd nomad-local-demo
+$ ./run_servers.sh
 ```
 
 Once that's done, proceed to [Step 2: Deploy an Application]({{< relref
